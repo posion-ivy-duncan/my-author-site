@@ -1,5 +1,5 @@
 ---
-import Navigation from "../components/Navigation.astro";
+import Navigation from "../components/navigation.astro";
 import { posts } from "../data/posts.js";
 
 const tags = [...new Set(posts.flatMap((post) => post.tags))];
@@ -78,7 +78,7 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
                     name="_gotcha"
                     style="display:none"
                   />
-                  
+
                 <div class="form-field">
                   <label for="name">Your name</label>
 
