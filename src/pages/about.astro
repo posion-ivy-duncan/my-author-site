@@ -1,0 +1,654 @@
+---
+import Navigation from "../components/Navigation.astro";
+
+const favoriteMMNovels = [
+  {
+    title: "The Captive Prince Trilogy",
+    author: "C. S. Pacat",
+    description:
+      "A trilogy that has stayed with me for its characters, political intrigue, and complicated relationships. The BEST enemies to lovers. Seriously. The best.",
+  },
+  {
+    title: "The Grandmaster of Demonic Cultivation",
+    author: "Mo Xiang Tong Xiu",
+    description:
+      "A danmei story filled with mystery, cultivation, and a relationship at its heart. It has such great, complex characters who you just fall in love with.",
+  },
+];
+
+const favoriteManga = [
+  {
+    title: "Tokyo Ghoul",
+    description:
+      "A dark, atmospheric series that blends horror, action, and questions about identity and humanity. I could seriously read this over and over again.",
+  },
+  {
+    title: "Hell's Paradise",
+    description:
+      "A brutal and beautiful story filled with mystery, survival, and such a great cast of characters.",
+  },
+  {
+    title: "Pandora Hearts",
+    description:
+      "A gothic fantasy full of secrets, complicated relationships, and a story that rewards paying attention to every detail. And you HAVE to pay attention to every detail.",
+  },
+  {
+    title: "Noragami",
+    description:
+      "A supernatural series with a great mix of humor, action, and emotion. Hoping for more seasons of the anime, because this story has so much more to offer than what has been animated so far.",
+  },
+  {
+    title: "Yona of the Dawn",
+    description:
+      "A sweeping fantasy adventure about growth, friendship, loyalty, and finding the strength to change your own story. Has the best main male character ever. Hak supremacy.",
+  },
+];
+
+const recommendedManhwa = [
+  {
+    title: "Low Tide in Twilight",
+    description:
+      "An omegaverse that definitely starts out toxic but grows into something I find very sweet.",
+  },
+  {
+    title: "Unintentional Love Story",
+    description:
+      "A story about a potter and a man who approaches him with an ulterior motive.",
+  },
+  {
+    title: "Our Sunny Days",
+    description:
+      "The greenest of green flag stories.",
+  },
+  {
+    title: "Virtual Strangers",
+    description:
+      "A story about two neighbors who, unbeknownst to them, are in a guild together in their online video game. It has the funniest misunderstanding trope I've ever read.",
+  },
+  {
+    title: "Backlight",
+    description:
+      "ANGST. But angst you care about.",
+  },
+  {
+    title: "Melting Point",
+    description:
+      "High school hockey teammates are reunited as adults. One has become a professional hockey player, and the other works at a company that is sponsoring him. SO GOOD!",
+  },
+  {
+    title: "Reunion",
+    description:
+      "It's about a guy who used to pretend to be a girl around a family for a summer to fool the grandfather, and the grandson who he developed feelings for. The best plot I've ever read in a BL. Truly beautiful.",
+  },
+];
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>About Ivy Duncan</title>
+
+    <meta
+      name="description"
+      content="Learn more about author Ivy Duncan, her love of MM romance, books, manga, BL, cats, travel, and storytelling."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <!-- ABOUT HERO -->
+      <section class="about-hero">
+        <div class="container">
+          <div class="about-hero-inner">
+            <p class="eyebrow">About the Author</p>
+
+            <h1>Hi, I'm Ivy.</h1>
+
+            <p class="hero-intro">
+              Author, reader, programmer, traveler, and lifelong lover of
+              stories.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT ME -->
+      <section class="about-section">
+        <div class="container narrow">
+          <p class="eyebrow">A Little About Me</p>
+
+          <h2>Stories have always been part of my life.</h2>
+
+          <div class="about-copy">
+            <p>
+              I'm Ivy Duncan, a Wisconsin-based author with a lifelong love
+              for reading, writing, anime, manga, and cats.
+            </p>
+
+            <p>
+              I've loved reading and writing since I was a kid. I started
+              writing MM romance in middle school, when I began sharing my
+              stories on Wattpad. What started as a creative hobby and a
+              place to share my love of storytelling eventually grew into
+              a journey toward becoming a published author.
+            </p>
+
+            <p>
+              These days, I spend my time writing messy romances and creating
+              stories for my characters to fall in love. When I'm not writing,
+              I can usually be found reading (either a book, a manga, or a manhwa) 
+              and a cat nearby.
+            </p>
+
+            <p>
+              I work full time as a computer programmer, which might seem
+              like a very different world from writing romance (because it totally is).
+              There is totally some overlap though.
+               I've always enjoyed math, logic puzzles, and solving problems, and
+              I think there's something satisfying about both
+              writing a story and figuring out how all its pieces fit
+              together.
+            </p>
+
+            <p>
+              I'm also a big traveler and am always planning my next
+              trip—or my next three. I also love talking about my travels, so
+              feel free to ask about any past or future trips.
+              There's something about seeing new, beautiful
+              places and experiencing something different that I find
+              endlessly inspiring.
+            </p>
+
+            <p>
+              And then there's reading. I love manga and BL manhwa, and a
+              large portion of my free time is spent reading them. Stories
+              have always been my favorite ways to escape, explore,
+              and connect with other people.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATS -->
+    <section class="cats-section">
+    <div class="container">
+        <div class="cats-inner">
+        <div class="cats-copy">
+            <p class="eyebrow">The Important Details</p>
+
+            <h2>There are, of course, cats.</h2>
+
+            <p>
+            I have two cats: a fluffy orange boy and a calico girl who
+            is my sole-cat.
+            </p>
+
+            <p>
+            They are excellent companions, occasional writing
+            distractions, and very important members of my household.
+            </p>
+        </div>
+
+        <div class="cats-gallery">
+            <figure class="cat-photo">
+            <img
+                src="/images/gus.jpg"
+                alt="Ivy's fluffy orange cat"
+            />
+            </figure>
+
+            <figure class="cat-photo">
+            <img
+                src="/images/lucy.jpg"
+                alt="Ivy's calico cat"
+            />
+            </figure>
+        </div>
+        </div>
+    </div>
+    </section>
+
+      <!-- FAVORITE MM NOVELS -->
+      <section class="recommendation-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">What I Love to Read</p>
+
+            <h2>My Favorite MM Novels</h2>
+
+            <p>
+              A few MM stories that I love. 
+            </p>
+          </div>
+
+          <div class="recommendation-grid">
+            {favoriteMMNovels.map((book) => (
+              <article class="recommendation-card">
+                <h3>{book.title}</h3>
+
+                <p class="recommendation-author">
+                  {book.author}
+                </p>
+
+                <p>{book.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- FAVORITE MANGA -->
+      <section class="recommendation-section alternate">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Manga</p>
+
+            <h2>My Favorite Manga</h2>
+
+            <p>
+              My personal top five manga.
+            </p>
+          </div>
+
+          {favoriteManga.length > 0 ? (
+            <div class="recommendation-list">
+              {favoriteManga.map((manga, index) => (
+                <article class="list-item">
+                  <span class="list-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <div>
+                    <h3>{manga.title}</h3>
+                    <p>{manga.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p class="coming-soon-note">
+              My top five are coming soon.
+            </p>
+          )}
+        </div>
+      </section>
+
+      <!-- BL MANHWA -->
+      <section class="recommendation-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Reading Recommendations</p>
+
+            <h2>My Recommended BL Manhwa</h2>
+
+            <p>
+              Some BL manhwa I'd happily recommend to fellow readers.
+            </p>
+          </div>
+
+          {recommendedManhwa.length > 0 ? (
+            <>
+              <div class="recommendation-grid">
+                {recommendedManhwa.map((manga) => (
+                  <article class="recommendation-card">
+                    <h3>{manga.title}</h3>
+
+                    <p>{manga.description}</p>
+                  </article>
+                ))}
+              </div>
+
+              <p class="recommendation-note">
+                And honestly, there are so, so many more...
+              </p>
+            </>
+          ) : (
+            <p class="coming-soon-note">
+              Recommendations coming soon.
+            </p>
+          )}
+        </div>
+      </section>
+
+
+      <!-- CLOSING -->
+      <section class="about-closing">
+        <div class="container narrow">
+          <p class="eyebrow">Thanks for stopping by</p>
+
+          <h2>Now, let's talk about books.</h2>
+
+          <p>
+            I hope you'll find a story here that makes you laugh, ache,
+            stay up too late reading, and ultimately believe in a happily
+            ever after.
+          </p>
+
+          <a href="/books" class="button button-primary">
+            Explore My Books
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* SHARED CONTAINER */
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .narrow {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  /* ABOUT HERO */
+  .about-hero {
+    padding: 8rem 0 7rem;
+    background: #fffaf4;
+  }
+
+  .about-hero-inner {
+    max-width: 800px;
+  }
+
+  .about-hero h1 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.95;
+  }
+
+  .hero-intro {
+    max-width: 650px;
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* ABOUT SECTION */
+  .about-section {
+    padding: 7rem 0;
+    background: #f4efe7;
+  }
+
+  .about-section h2 {
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .about-copy {
+    max-width: 700px;
+  }
+
+  .about-copy p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .about-copy p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* CATS */
+  .cats-section {
+    padding: 7rem 0;
+    background: #fffaf4;
+  }
+
+  .cats-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .cats-copy {
+    max-width: 600px;
+  }
+
+  .cats-copy h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .cats-copy p:not(.eyebrow) {
+    max-width: 550px;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+ .cats-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.cat-photo {
+  margin: 0;
+}
+
+.cat-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+}
+
+  /* RECOMMENDATIONS */
+  .recommendation-section {
+    padding: 7rem 0;
+    background: #fffaf4;
+  }
+
+  .recommendation-section.alternate {
+    background: #f4efe7;
+  }
+
+  .section-heading {
+    max-width: 700px;
+    margin-bottom: 4rem;
+  }
+
+  .section-heading h2 {
+    margin-bottom: 1.25rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .section-heading > p:last-child {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .recommendation-card {
+    padding: 2rem;
+    background: #f4efe7;
+  }
+
+  .alternate .recommendation-card {
+    background: #fffaf4;
+  }
+
+  .recommendation-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .recommendation-card p:last-child {
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  .recommendation-author {
+    margin-bottom: 1rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .recommendation-list {
+    max-width: 800px;
+  }
+
+  .recommendation-note {
+    margin-top: 3rem;
+    color: #765f48;
+    font-style: italic;
+  }
+
+  .list-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid #c9c2b8;
+  }
+
+  .list-item:last-child {
+    border-bottom: 1px solid #c9c2b8;
+  }
+
+  .list-number {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .list-item h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.35rem;
+  }
+
+  .list-item p {
+    margin: 0;
+    color: #555;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .coming-soon-note {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  /* CLOSING */
+  .about-closing {
+    padding: 7rem 0;
+    background: #765f48;
+    color: #fffaf4;
+  }
+
+  .about-closing h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .about-closing p:not(.eyebrow) {
+    max-width: 650px;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .about-closing .eyebrow {
+    color: #fffaf4;
+  }
+
+  .about-closing .button {
+    display: inline-block;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    padding: 2rem 0;
+    background: #fffaf4;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .about-hero {
+      padding: 5rem 0;
+    }
+
+    .about-section,
+    .cats-section,
+    .recommendation-section,
+    .about-closing {
+      padding: 5rem 0;
+    }
+
+    .cats-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .recommendation-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .list-item {
+      grid-template-columns: 45px 1fr;
+      gap: 1rem;
+    }
+
+    .cats-gallery {
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+  }
+</style>

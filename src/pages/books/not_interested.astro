@@ -1,0 +1,868 @@
+---
+import Navigation from "../../components/Navigation.astro";
+
+const book = {
+  title: "Not Interested",
+  series: "Proximity Book Three",
+  releaseDate: "TBD",
+  tagline:
+    "For two people who have always known exactly where they’re going, love was never part of the plan.",
+
+  cover: "/images/not_interested.jpg",
+
+  description: `Luca has spent four years preparing for the future. 
+
+With law school waiting for him after graduation, he has little time—or interest—in distractions. His days are spent in lecture halls and library study nooks, and his nights are quiet, predictable, and comfortably alone. 
+
+Then there’s Jason. 
+
+An extrovert with a reputation that precedes him, Jason is charismatic, outgoing, and seemingly everywhere Luca isn’t. He spends his weekends at parties, knows half the campus by name, and has somehow decided that flirting with Luca is his new favorite pastime. 
+
+Luca thinks it’s a joke. 
+
+Jason insists it isn’t. 
+
+At first, Luca can tolerate Jason’s attention from a safe distance, but when Jason starts joining him in the library, bringing him his coffee order before class, and finding subtle ways to get closer, that distance becomes harder to maintain. Somewhere between late-night study sessions and fleeting touches, Luca realizes that Jason’s presence has become something he looks forward to. For a man who has always been comfortable on his own, accepting Jason means opening up in a way Luca never has before.
+
+But falling for someone is easier than figuring out how to make a relationship work. As Jason struggles against the expectations of the family that has always dictated his future, Luca must learn that loving another person means more than making room for them in his carefully ordered life.`,
+
+  /*
+    Keep these for later when the book is available.
+
+    purchaseLinks: {
+      amazon: "ADD AMAZON LINK",
+      barnesAndNoble: "ADD BARNES & NOBLE LINK",
+      goodreads: "ADD GOODREADS LINK",
+    },
+
+    reviews: [
+      {
+        quote: "ADD AMAZON REVIEW HERE",
+        source: "Amazon",
+      },
+      {
+        quote: "ADD GOODREADS REVIEW HERE",
+        source: "Goodreads",
+      },
+    ],
+  */
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>{book.title} | Ivy Duncan</title>
+
+    <meta
+      name="description"
+      content={book.tagline}
+    />
+  </head>
+
+  <body>
+
+    <Navigation />
+
+    <main>
+
+      <!-- HERO / TITLE IMAGE -->
+
+      <section class="book-hero">
+        <div class="container book-hero-inner">
+
+          <div class="book-cover">
+            <img
+              src={book.cover}
+              alt={`Cover of ${book.title}`}
+            />
+          </div>
+
+          <div class="book-title-content">
+
+            <p class="eyebrow">Ivy Duncan</p>
+
+            <h1>{book.title}</h1>
+
+            {book.series && (
+              <p class="series">{book.series}</p>
+            )}
+
+            <p class="release-date">
+              Coming Soon — Release Date: {book.releaseDate}
+            </p>
+
+            <p class="tagline">
+              {book.tagline}
+            </p>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- DESCRIPTION -->
+
+      <section class="book-description">
+        <div class="container narrow">
+
+          <p class="eyebrow">The Story</p>
+
+          <h2>The Best Things Aren't Always Planned.</h2>
+
+          <div class="description">
+            {book.description.split("\n\n").map((paragraph) => (
+              <p>{paragraph.trim()}</p>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+          <!-- TRIGGER WARNINGS -->
+
+      <section class="trigger-warnings">
+        <div class="container narrow">
+
+          <p class="eyebrow">Before You Read</p>
+
+          <h2>Trigger Warnings</h2>
+
+          <p class="trigger-intro">
+            Please take care of yourself while reading. This book contains
+            references to the following:
+          </p>
+
+          <ul class="trigger-list">
+            <li>Suggestion of past child abuse</li>
+          </ul>
+
+        </div>
+      </section>
+
+
+
+      <!-- PURCHASE / REVIEW LINKS
+
+      <section class="book-links">
+        <div class="container">
+
+          <div class="links-header">
+
+            <p class="eyebrow">Find the Book</p>
+
+            <h2>Read the story</h2>
+
+            <p>
+              Find <em>{book.title}</em> at your favorite bookstore or
+              leave a review after reading.
+            </p>
+
+          </div>
+
+          <div class="link-grid">
+
+            <a
+              class="book-link"
+              href={book.purchaseLinks.amazon}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Amazon</span>
+              <small>Buy the book</small>
+            </a>
+
+            <a
+              class="book-link"
+              href={book.purchaseLinks.barnesAndNoble}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>B&amp;N</span>
+              <small>Buy the book</small>
+            </a>
+
+            <a
+              class="book-link"
+              href={book.purchaseLinks.goodreads}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Goodreads</span>
+              <small>Leave a review</small>
+            </a>
+
+          </div>
+
+        </div>
+      </section>
+
+      -->
+
+
+      <!-- START THE SERIES -->
+
+      <section class="start-series">
+        <div class="container">
+
+          <p class="eyebrow">New to the Series?</p>
+
+          <h2>Start with Book One</h2>
+
+          <a
+            class="start-series-link"
+            href="/books/right_next_door"
+          >
+            <span>Right Next Door</span>
+            <small>Read Book One →</small>
+          </a>
+
+        </div>
+      </section>
+
+
+      <!-- NEXT BOOK
+
+      <section class="next-book">
+        <div class="container">
+
+          <p class="eyebrow">Continue the Series</p>
+
+          <h2>Next in Proximity</h2>
+
+          <a
+            class="next-book-link"
+            href={book.nextBook.href}
+          >
+            <span>{book.nextBook.title}</span>
+            <small>Read the next book →</small>
+          </a>
+
+        </div>
+      </section>
+
+      -->
+
+           <!-- BEHIND THE COVER -->
+
+      <section class="behind-cover">
+        <div class="container">
+
+          <div class="behind-cover-header">
+            <p class="eyebrow">Behind the Cover</p>
+
+            <h2>How the cover came together.</h2>
+
+            <p>
+              I design my own book covers, and I am not at all an artist, so I 
+              explore many different ideas before settling on the final design. 
+              Fot the cover of <em>{book.title}</em>, I had to get Procerate to help 
+              turn my vision into reality. Here are some pictures of the process I used. 
+            </p>
+          </div>
+
+            <div class="cover-gallery">
+
+            <figure class="cover-image">
+              <img
+                src="/images/not_interested_first_design.jpg"
+                alt="First cover concept of Not Interested"
+              />
+              <figcaption>
+                One of the possible cover designs. It just wasn't quite what I wanted.
+              </figcaption>
+            </figure>
+
+            <figure class="cover-image">
+              <img
+                src="/images/not_interested_layers.jpg"
+                alt="Using Procerate for Not Interested Cover"
+              />
+              <figcaption>
+                This was my first time using Procerate. You can tell I got a little frustrated.
+              </figcaption>
+            </figure>
+
+            <figure class="cover-image">
+              <img
+                src="/images/not_interested_halfway.jpg"
+                alt="First Procerate milestone"
+              />
+              <figcaption>
+                This is the point where I started to realize it was coming together.Still had hours of work ahead of me, but I was motivated. 
+              </figcaption>
+            </figure>
+
+          </div>
+
+
+        </div>
+      </section>
+
+
+
+
+      <!-- REVIEWS
+
+      <section class="reviews">
+        <div class="container">
+
+          <div class="reviews-header">
+
+            <p class="eyebrow">Reader Reviews</p>
+
+            <h2>What readers are saying</h2>
+
+          </div>
+
+          <div class="review-grid">
+
+            {book.reviews.map((review) => (
+              <blockquote class="review">
+
+                <p>“{review.quote}”</p>
+
+                <footer>
+                  — {review.source} reader
+                </footer>
+
+              </blockquote>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      -->
+
+    </main>
+
+  </body>
+</html>
+
+
+<style>
+  /* =========================
+     GLOBAL
+  ========================== */
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+
+    background: #fffaf4;
+    color: #302c28;
+
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.7;
+  }
+
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :global(img) {
+    max-width: 100%;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin: 0 auto;
+  }
+
+  .narrow {
+    max-width: 800px;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  p {
+    margin-top: 0;
+  }
+
+
+  /* =========================
+     BOOK HERO
+  ========================== */
+
+  .book-hero {
+    padding: 6rem 0;
+    background: #f4efe7;
+  }
+
+  .book-hero-inner {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .book-cover img {
+    width: 100%;
+    display: block;
+
+    box-shadow:
+      0 20px 50px rgb(0 0 0 / 15%);
+  }
+
+  .book-title-content {
+    max-width: 650px;
+  }
+
+  h1 {
+    margin-bottom: 1.5rem;
+
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .series {
+    margin-bottom: 1rem;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .release-date {
+    margin-bottom: 1.5rem;
+
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .tagline {
+    margin: 0;
+
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+
+  /* =========================
+     DESCRIPTION
+  ========================== */
+
+  .book-description {
+    padding: 7rem 0;
+  }
+
+  .book-description h2 {
+    margin-bottom: 2.5rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .description p {
+    margin-bottom: 1.5rem;
+
+    font-size: 1.1rem;
+  }
+
+   /* =========================
+     TRIGGER WARNINGS
+  ========================== */
+
+  .trigger-warnings {
+    padding: 5rem 0;
+    background: #f4efe7;
+  }
+
+  .trigger-warnings h2 {
+    margin-bottom: 1.5rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .trigger-intro {
+    max-width: 650px;
+    margin-bottom: 1.5rem;
+
+    font-size: 1rem;
+  }
+
+  .trigger-list {
+    max-width: 650px;
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .trigger-list li {
+    margin-bottom: 0.6rem;
+
+    font-size: 1rem;
+  }
+
+  .trigger-list li:last-child {
+    margin-bottom: 0;
+  }
+
+
+      /* =========================
+     BEHIND THE COVER
+  ========================== */
+
+  .behind-cover {
+    padding: 7rem 0;
+    background: #fffaf4;
+  }
+
+  .behind-cover-header {
+    max-width: 700px;
+    margin-bottom: 4rem;
+  }
+
+  .behind-cover-header h2 {
+    margin-bottom: 1.5rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .behind-cover-header > p:last-child {
+    margin-bottom: 0;
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .cover-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .cover-image {
+    margin: 0;
+  }
+
+  .cover-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+  }
+
+  .cover-image figcaption {
+    margin-top: 0.75rem;
+
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+
+  /* =========================
+     LINKS
+  ========================== */
+
+  .book-links {
+    padding: 6rem 0;
+
+    background: #f4efe7;
+  }
+
+  .links-header {
+    max-width: 650px;
+    margin-bottom: 3rem;
+  }
+
+  .links-header h2 {
+    margin-bottom: 1rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .book-link {
+    padding: 1.75rem;
+
+    border: 1px solid #d9d0c5;
+    background: #fffaf4;
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .book-link:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 10px 30px rgb(0 0 0 / 8%);
+  }
+
+  .book-link span {
+    display: block;
+
+    margin-bottom: 0.35rem;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .book-link small {
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+
+  /* =========================
+     START THE SERIES
+  ========================== */
+
+  .start-series {
+    padding: 6rem 0;
+
+    background: #f4efe7;
+  }
+
+  .start-series h2 {
+    margin-bottom: 2rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .start-series-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 800px;
+    padding: 1.5rem 1.75rem;
+
+    border: 1px solid #d9d0c5;
+    background: #fffaf4;
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .start-series-link:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 10px 30px rgb(0 0 0 / 8%);
+  }
+
+  .start-series-link span {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .start-series-link small {
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+
+  /* =========================
+     NEXT BOOK
+  ========================== */
+
+  .next-book {
+    padding: 6rem 0;
+
+    background: #fffaf4;
+  }
+
+  .next-book h2 {
+    margin-bottom: 2rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .next-book-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 800px;
+    padding: 1.5rem 1.75rem;
+
+    border: 1px solid #d9d0c5;
+    background: #f4efe7;
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .next-book-link:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 10px 30px rgb(0 0 0 / 8%);
+  }
+
+  .next-book-link span {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .next-book-link small {
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+
+  /* =========================
+     REVIEWS
+  ========================== */
+
+  .reviews {
+    padding: 7rem 0;
+  }
+
+  .reviews-header {
+    margin-bottom: 3rem;
+  }
+
+  .reviews-header h2 {
+    margin-bottom: 0;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .review {
+    margin: 0;
+    padding: 2rem;
+
+    border-left: 3px solid #765f48;
+
+    background: #f4efe7;
+  }
+
+  .review p {
+    margin-bottom: 1.5rem;
+
+    font-size: 1.15rem;
+    font-style: italic;
+  }
+
+  .review footer {
+    color: #765f48;
+
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+
+  /* =========================
+     MOBILE
+  ========================== */
+
+  @media (max-width: 700px) {
+
+    .container {
+      width: min(100% - 2rem, 600px);
+    }
+
+    .book-hero {
+      padding: 4rem 0;
+    }
+
+    .book-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      text-align: center;
+    }
+
+    .book-cover {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .book-title-content {
+      margin: 0 auto;
+    }
+
+    .link-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .review-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .start-series-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .next-book-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .book-description,
+    .reviews {
+      padding: 5rem 0;
+    }
+  }
+</style>

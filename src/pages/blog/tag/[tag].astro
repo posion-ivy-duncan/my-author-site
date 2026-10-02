@@ -1,0 +1,270 @@
+---
+import Navigation from "../../../components/Navigation.astro";
+import { posts } from "../../../data/posts.js";
+
+export function getStaticPaths() {
+  const tags = [...new Set(posts.flatMap((post) => post.tags))];
+
+  return tags.map((tag) => ({
+    params: {
+      tag: tag.toLowerCase().replace(/\s+/g, "-"),
+    },
+    props: {
+      tag,
+    },
+  }));
+}
+
+const { tag } = Astro.props;
+
+const filteredPosts = posts.filter((post) =>
+  post.tags.some(
+    (postTag) =>
+      postTag.toLowerCase().replace(/\s+/g, "-") === Astro.params.tag
+  )
+);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>{tag} | Blog | Ivy Duncan</title>
+
+    <meta
+      name="description"
+      content={`Ivy Duncan's blog posts about ${tag.toLowerCase()}.`}
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <!-- TAG HERO -->
+      <section class="tag-hero">
+        <div class="container">
+          <div class="tag-hero-inner">
+            <p class="eyebrow">Blog Topic</p>
+
+            <h1>{tag}</h1>
+
+            <p class="hero-intro">
+              Blog posts about {tag.toLowerCase()}.
+            </p>
+
+            <a href="/blog" class="back-link">
+              ← Back to All Posts
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- POSTS -->
+      <section class="posts-section">
+        <div class="container">
+          <div class="post-list">
+            {
+              filteredPosts.length > 0 ? (
+                filteredPosts.map((post) => (
+                  <article class="post-card">
+                    <div class="post-meta">
+                      <time datetime="2026-10-01">{post.date}</time>
+                    </div>
+
+                    <h2>{post.title}</h2>
+
+                    <p>{post.excerpt}</p>
+
+                    <div class="post-tags">
+                      {post.tags.map((postTag) => (
+                        <a
+                          href={`/blog/tag/${postTag.toLowerCase().replace(/\s+/g, "-")}`}
+                          class="post-tag"
+                        >
+                          {postTag}
+                        </a>
+                      ))}
+                    </div>
+
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="post-link"
+                    >
+                      Read More →
+                    </a>
+                  </article>
+                ))
+              ) : (
+                <p>No posts found for this topic.</p>
+              )
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  /* TAG HERO */
+
+  .tag-hero {
+    padding: 8rem 0 6rem;
+    background: #fffaf4;
+  }
+
+  .tag-hero-inner {
+    max-width: 800px;
+  }
+
+  .tag-hero h1 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.95;
+  }
+
+  .hero-intro {
+    max-width: 700px;
+    margin: 0 0 2rem;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .back-link {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* POSTS */
+
+  .posts-section {
+    padding: 7rem 0;
+    background: #f4efe7;
+  }
+
+  .post-list {
+    max-width: 850px;
+  }
+
+  .post-card {
+    padding: 2.5rem 0;
+    border-top: 1px solid #c9c2b8;
+  }
+
+  .post-card:last-child {
+    border-bottom: 1px solid #c9c2b8;
+  }
+
+  .post-meta {
+    margin-bottom: 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .post-card h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .post-card p {
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-link {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .post-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* FOOTER */
+
+  .site-footer {
+    padding: 2rem 0;
+    background: #fffaf4;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .tag-hero {
+      padding: 5rem 0;
+    }
+
+    .posts-section {
+      padding: 5rem 0;
+    }
+  }
+</style>

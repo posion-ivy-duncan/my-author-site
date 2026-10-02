@@ -1,0 +1,685 @@
+---
+import Navigation from "../../components/Navigation.astro";
+
+const standaloneBook = {
+  title: "Five Years and 2,000 Miles",
+  tagline: "Can a friendship ruined by a kiss ever recover?",
+  image: "/images/five_years.jpg",
+  href: "/books/five_years",
+};
+
+const proximityBooks = [
+  {
+    number: "Book One",
+    title: "Right Next Door",
+    image: "/images/right_next_door.jpg",
+    href: "/books/right_next_door",
+  },
+  {
+    number: "Book Two",
+    title: "If It's Meant to Be",
+    image: "/images/if_its_meant_to_be.jpg",
+    href: "/books/if_its_meant_to_be",
+  },
+  {
+    number: "Book Three",
+    title: "Not Interested",
+    image: "/images/not_interested.jpg",
+    href: "/books/not_interested",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Books | Ivy Duncan</title>
+    <meta
+      name="description"
+      content="Explore books by Ivy Duncan, including the Proximity series and Five Years and 2,000 Miles."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <!-- PAGE INTRO -->
+
+      <section class="page-hero">
+        <div class="container">
+          <p class="eyebrow">Ivy Duncan</p>
+
+          <h1>Books</h1>
+
+          <p class="intro">
+            Stories of love, connection, and happily ever afters.
+          </p>
+        </div>
+      </section>
+
+      <!-- STANDALONE -->
+
+      <section class="books-section standalone-section">
+        <div class="container">
+
+          <div class="section-heading">
+            <p class="eyebrow">Standalone</p>
+            <h2>Five Years and 2,000 Miles</h2>
+          </div>
+
+          <article class="featured-book">
+
+            <a
+              class="book-cover-link"
+              href={standaloneBook.href}
+              aria-label={`View ${standaloneBook.title}`}
+            >
+              <img
+                src={standaloneBook.image}
+                alt={`Cover of ${standaloneBook.title}`}
+              />
+            </a>
+
+            <div class="book-info">
+
+              <p class="book-label">Standalone</p>
+
+              <h3>{standaloneBook.title}</h3>
+
+              <p class="book-tagline">
+                {standaloneBook.tagline}
+              </p>
+
+              <a
+                class="book-link"
+                href={standaloneBook.href}
+              >
+                View Book
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- PROXIMITY SERIES -->
+
+      <section class="books-section series-section">
+        <div class="container">
+
+          <div class="section-heading series-heading">
+            <p class="eyebrow">The Proximity Series</p>
+
+            <h2>Proximity</h2>
+
+            <p class="series-intro">
+              Four interconnected stories of love and friendship.
+            </p>
+          </div>
+
+          <div class="series-books">
+
+            <!-- BOOKS ONE THROUGH THREE -->
+
+            {
+              proximityBooks.map((book) => (
+                <article class="series-book">
+
+                  <a
+                    class="book-cover-link"
+                    href={book.href}
+                    aria-label={`View ${book.title}`}
+                  >
+                    <img
+                      src={book.image}
+                      alt={`Cover of ${book.title}`}
+                    />
+                  </a>
+
+                  <div class="series-book-info">
+
+                    <p class="book-number">
+                      Proximity {book.number}
+                    </p>
+
+                    <h3>{book.title}</h3>
+
+                    <a
+                      class="book-link"
+                      href={book.href}
+                    >
+                      View Book
+                      <span aria-hidden="true">→</span>
+                    </a>
+
+                  </div>
+
+                </article>
+              ))
+            }
+
+            <!-- BOOK FOUR / COMING SOON -->
+
+            <article class="series-book coming-soon">
+
+              <div
+                class="coming-soon-cover"
+                aria-label="Proximity Book Four coming soon"
+              >
+                <p>Proximity</p>
+                <strong>Book Four</strong>
+                <span>Coming Soon</span>
+              </div>
+
+              <div class="series-book-info">
+
+                <p class="book-number">
+                  Proximity Book Four
+                </p>
+
+                <h3>Coming Soon</h3>
+
+                <p class="coming-soon-text">
+                  The title and cover will be revealed soon.
+                </p>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+      </section>
+
+<!-- FIND YOUR NEXT READ -->
+
+      <section class="trope-section">
+        <div class="container">
+
+          <div class="section-heading trope-heading">
+            <p class="eyebrow">Find Your Next Read</p>
+            <h2>Have a favorite trope?</h2>
+            <p class="trope-intro">
+              Pick your next read accordingly!
+            </p>
+          </div>
+
+          <div class="trope-grid">
+
+            <div class="trope">
+              <h3>Enemies to Lovers</h3>
+              <a href="/books/right_next_door">Right Next Door</a>
+            </div>
+
+            <div class="trope">
+              <h3>Toxic Ex</h3>
+              <a href="/books/five_years">Five Years and 2,000 Miles</a>
+              <a href="/books/right_next_door">Right Next Door</a>
+            </div>
+
+            <div class="trope">
+              <h3>Friends to Lovers</h3>
+              <a href="/books/five_years">Five Years and 2,000 Miles</a>
+            </div>
+
+            <div class="trope">
+              <h3>Second Chance Romance</h3>
+              <a href="/books/five_years">Five Years and 2,000 Miles</a>
+              <a href="/books/if_its_meant_to_be">If It's Meant to Be</a>
+            </div>
+
+            <div class="trope">
+              <h3>One Bed</h3>
+              <a href="/books/right_next_door">Right Next Door</a>
+            </div>
+
+            <div class="trope">
+              <h3>Slow Burn</h3>
+              <a href="/books/five_years">Five Years and 2,000 Miles</a>
+              <a href="/books/right_next_door">Right Next Door</a>
+            </div>
+
+            <div class="trope">
+              <h3>Opposites Attract</h3>
+              <a href="/books/five_years">Five Years and 2,000 Miles</a>
+              <a href="/books/not_interested">Not Interested</a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* =========================
+     BASE
+  ========================== */
+
+  :global(html) {
+    background: #faf9f6;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #faf9f6;
+    color: #2f2b27;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* =========================
+     PAGE HERO
+  ========================== */
+
+  .page-hero {
+    padding: 7rem 0 5rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .page-hero h1 {
+    margin: 0;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 400;
+    line-height: 0.95;
+  }
+
+  .intro {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  /* =========================
+     SECTION
+  ========================== */
+
+  .books-section {
+    padding: 6rem 0;
+  }
+
+  .standalone-section {
+    background: #fffaf4;
+  }
+
+  .series-section {
+    background: #f4efe7;
+  }
+
+  .section-heading {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  /* =========================
+     STANDALONE BOOK
+  ========================== */
+
+  .featured-book {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    align-items: center;
+    gap: clamp(3rem, 7vw, 7rem);
+    max-width: 900px;
+  }
+
+  .book-cover-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .book-cover-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 18px 40px rgb(0 0 0 / 12%);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .book-cover-link:hover img {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 45px rgb(0 0 0 / 16%);
+  }
+
+  .book-label {
+    margin: 0 0 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .book-info h3 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .book-tagline {
+    max-width: 500px;
+    margin: 1.5rem 0 2rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .book-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .book-link span {
+    transition: transform 0.2s ease;
+  }
+
+  .book-link:hover span {
+    transform: translateX(4px);
+  }
+
+  /* =========================
+     SERIES
+  ========================== */
+
+  .series-heading {
+    max-width: 700px;
+  }
+
+  .series-intro {
+    max-width: 650px;
+    margin: 1.5rem 0 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .series-books {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem 3rem;
+  }
+
+  .series-book {
+    display: grid;
+    grid-template-columns: minmax(140px, 200px) 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .series-book-info {
+    min-width: 0;
+  }
+
+  .book-number {
+    margin: 0 0 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .series-book h3 {
+    margin: 0 0 1.5rem;
+    font-size: 1.65rem;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  /* =========================
+     COMING SOON
+  ========================== */
+
+  .coming-soon-cover {
+    aspect-ratio: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: 1px solid #d9d0c5;
+    background: #fffaf4;
+    text-align: center;
+  }
+
+  .coming-soon-cover p {
+    margin: 0 0 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .coming-soon-cover strong {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .coming-soon-cover span {
+    margin-top: 1.5rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coming-soon-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+    /* =========================
+     TROPE FINDER
+  ========================== */
+
+  .trope-section {
+    padding: 7rem 0;
+    background: #fffaf4;
+  }
+
+  .trope-heading {
+    max-width: 700px;
+  }
+
+  .trope-intro {
+    margin: 1.5rem 0 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .trope-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+    max-width: 900px;
+  }
+
+  .trope {
+    padding: 0 0 2rem;
+    border-bottom: 1px solid #dedbd4;
+  }
+
+  .trope h3 {
+    margin: 0 0 1rem;
+    font-size: 1.35rem;
+    font-weight: 400;
+  }
+
+  .trope a {
+    display: block;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  .trope a:last-child {
+    margin-bottom: 0;
+  }
+
+  .trope a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* =========================
+     FOOTER
+  ========================== */
+
+  .site-footer {
+    padding: 3rem 0;
+    border-top: 1px solid #dedbd4;
+    background: #faf9f6;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* =========================
+     MOBILE
+  ========================== */
+
+  @media (max-width: 800px) {
+    .page-hero {
+      padding: 5rem 0 4rem;
+    }
+
+    .books-section {
+      padding: 4.5rem 0;
+    }
+
+    .featured-book {
+      grid-template-columns: minmax(180px, 260px);
+      gap: 2.5rem;
+      justify-content: center;
+    }
+
+    .book-info {
+      text-align: center;
+    }
+
+    .book-tagline {
+      margin-inline: auto;
+    }
+
+    .series-books {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+
+    .series-book {
+      grid-template-columns: minmax(150px, 220px) 1fr;
+    }
+
+    .trope-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .page-hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .page-hero h1 {
+      font-size: 3.5rem;
+    }
+
+    .featured-book {
+      grid-template-columns: minmax(0, 260px);
+    }
+
+    .series-book {
+      grid-template-columns: minmax(0, 180px);
+      justify-content: center;
+      text-align: center;
+    }
+
+    .series-book-info {
+      text-align: center;
+    }
+
+    .coming-soon-text {
+      max-width: 280px;
+      margin-inline: auto;
+    }
+  }
+</style>

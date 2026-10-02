@@ -1,0 +1,499 @@
+---
+import Navigation from "../components/Navigation.astro";
+import { posts } from "../data/posts.js";
+
+const tags = [...new Set(posts.flatMap((post) => post.tags))];
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Blog | Ivy Duncan</title>
+
+    <meta
+      name="description"
+      content="Writing, travel, life updates, and whatever else Ivy Duncan feels like talking about."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <!-- BLOG HERO -->
+      <section class="blog-hero">
+        <div class="container">
+          <div class="blog-hero-inner">
+            <h1>Things I Want to Talk About</h1>
+
+            <p class="hero-intro">
+              This is my place to talk about things! Writing, travel, reading,
+              any life events… and who knows what else.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ASK ME ANYTHING -->
+      <section class="ask-section">
+        <div class="container">
+          <div class="ask-inner">
+            <div class="ask-copy">
+              <p class="eyebrow">Have a Question?</p>
+
+              <h2>Ask me anything.</h2>
+
+              <p>
+                Have a question about my books, writing, characters, travel,
+                or something completely random? Send it my way!
+              </p>
+
+              <p>
+                I might even use your question as inspiration for a future
+                blog post.
+              </p>
+            </div>
+
+            <div class="ask-form-wrapper">
+              <form
+                  class="ask-form"
+                  action="https://formspree.io/f/xgavjdaq"
+                  method="POST"
+                >
+                 <input
+                    type="hidden"
+                    name="_subject"
+                    value="New Ask Me Anything question - Ivy Duncan"
+                  />
+
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    style="display:none"
+                  />
+                  
+                <div class="form-field">
+                  <label for="name">Your name</label>
+
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="email">Your email</label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="question">Your question</label>
+
+                  <textarea
+                    id="question"
+                    name="question"
+                    rows="6"
+                    placeholder="What do you want to ask?"
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="button button-primary">
+                  Ask Me
+                </button>
+
+                <p class="form-note">
+                  Questions may inspire a future blog post!
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOG TAGS -->
+      <section class="tags-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Browse by Topic</p>
+
+            <h2>Find what you're looking for.</h2>
+          </div>
+
+          <div class="tag-list">
+
+            {
+              tags.map((tag) => (
+                <a
+                  href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                  class="tag-link"
+                >
+                  {tag}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOG POSTS -->
+      <section class="posts-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">From the Blog</p>
+
+            <h2>Latest Posts</h2>
+          </div>
+
+          <div class="post-list">
+            {
+              posts.map((post) => (
+                <article class="post-card">
+                  <div class="post-meta">
+                    <time datetime="2026-10-01">{post.date}</time>
+                  </div>
+
+                  <h3>{post.title}</h3>
+
+                  <p>{post.excerpt}</p>
+
+                  <div class="post-tags">
+                    {post.tags.map((tag) => (
+                      <a
+                        href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                        class="post-tag"
+                      >
+                        {tag}
+                      </a>
+                    ))}
+                  </div>
+
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="post-link"
+                  >
+                    Read More →
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  /* BLOG HERO */
+
+  .blog-hero {
+    padding: 8rem 0 7rem;
+    background: #fffaf4;
+  }
+
+  .blog-hero-inner {
+    max-width: 800px;
+  }
+
+  .blog-hero h1 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.95;
+  }
+
+  .hero-intro {
+    max-width: 700px;
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* ASK ME ANYTHING */
+
+  .ask-section {
+    padding: 7rem 0;
+    background: #f4efe7;
+  }
+
+  .ask-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .ask-copy {
+    max-width: 550px;
+  }
+
+  .ask-copy h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .ask-copy p:not(.eyebrow) {
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .ask-copy p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ask-form-wrapper {
+    padding: 2.5rem;
+    background: #fffaf4;
+  }
+
+  .ask-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-field label {
+    margin-bottom: 0.5rem;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #c9c2b8;
+    border-radius: 0;
+    background: #fff;
+    color: #333;
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: 2px solid #765f48;
+    outline-offset: 2px;
+  }
+
+  .ask-form .button {
+    align-self: flex-start;
+  }
+
+  .form-note {
+    margin: -0.75rem 0 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  /* TAGS */
+
+  .tags-section {
+    padding: 5rem 0;
+    background: #f4efe7;
+  }
+
+  .tags-section .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tag-link {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #765f48;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .tag-link:hover {
+    background: #765f48;
+    color: #fffaf4;
+  }
+
+  /* POSTS */
+
+  .posts-section {
+    padding: 7rem 0;
+    background: #fffaf4;
+  }
+
+  .section-heading {
+    max-width: 700px;
+    margin-bottom: 4rem;
+  }
+
+  .section-heading h2 {
+    margin-bottom: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .post-list {
+    max-width: 850px;
+  }
+
+  .post-card {
+    padding: 2.5rem 0;
+    border-top: 1px solid #c9c2b8;
+  }
+
+  .post-card:last-child {
+    border-bottom: 1px solid #c9c2b8;
+  }
+
+  .post-meta {
+    margin-bottom: 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .post-card h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .post-card p {
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-link {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .post-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* FOOTER */
+
+  .site-footer {
+    padding: 2rem 0;
+    background: #fffaf4;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .blog-hero {
+      padding: 5rem 0;
+    }
+
+    .ask-section,
+    .tags-section,
+    .posts-section {
+      padding: 5rem 0;
+    }
+
+    .ask-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .ask-form-wrapper {
+      padding: 1.5rem;
+    }
+
+    .ask-form .button {
+      width: 100%;
+    }
+  }
+</style>

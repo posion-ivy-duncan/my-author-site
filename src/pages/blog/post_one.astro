@@ -1,0 +1,259 @@
+---
+import Navigation from "../../components/Navigation.astro";
+import { posts } from "../../data/posts.js";
+
+const post = posts.find((post) => post.slug === "post_one");
+
+if (!post) {
+  throw new Error("Blog post not found.");
+}
+
+const { title, date, tags } = post;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | Ivy Duncan</title>
+    <meta
+      name="description"
+      content="Ivy Duncan talks about finally getting around to making an author website."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <article class="blog-post">
+        <div class="container narrow">
+          <a href="/blog" class="back-link">← Back to Blog</a>
+
+          <header class="post-header">
+  <p class="eyebrow">From the Blog</p>
+
+  <h1>{title}</h1>
+
+  <p class="post-date">{date}</p>
+
+  <div class="post-tags">
+    {
+      tags.map((tag) => (
+        <a
+          href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+          class="post-tag"
+        >
+          {tag}
+        </a>
+      ))
+    }
+  </div>
+</header>
+
+          <div class="post-content">
+            <p>
+              It’s all very exciting. I’ve been writing for over ten years
+              now (wow, I feel old), and I’ve been a published author for a
+              few years, but I’m just now finally getting around to making
+              a website.
+            </p>
+
+            <p>
+              I love writing, and it’s definitely my passion, but there’s a
+              lot more that goes into it besides coming up with stories and
+              putting them on paper, and I’m honestly not all that great at
+              all the other stuff. My social media barely gets updated, and
+              I just recently got <em>If it’s Meant to Be</em> on Barnes and
+              Noble even though it’s been out for months.
+            </p>
+
+            <p>
+              Full time job + naturally lazy + trying to be a “proper”
+              author = things falling through the cracks.
+            </p>
+
+            <p>
+              But an author website is no longer one of those things!
+            </p>
+          </div>
+
+          <div class="post-footer">
+            <a href="/blog" class="button button-secondary">
+              Back to Blog
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :global(html) {
+    background: #faf9f6;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #faf9f6;
+    color: #2f2924;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .narrow {
+    max-width: 800px;
+  }
+
+  .blog-post {
+    padding: 5rem 0 6rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 3rem;
+    color: #765f48;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-header {
+    margin-bottom: 3.5rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: #765f48;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 400;
+  }
+
+  .post-date {
+    margin: 0;
+    color: #765f48;
+    font-size: 0.95rem;
+  }
+
+  .post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.post-tag {
+  color: #765f48;
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.post-tag:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+  .post-content {
+    font-size: 1.15rem;
+    line-height: 1.9;
+  }
+
+  .post-content p {
+    margin: 0 0 1.75rem;
+  }
+
+  .post-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(118 95 72 / 20%);
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid #765f48;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .button-secondary {
+    color: #765f48;
+    background: transparent;
+  }
+
+  .button-secondary:hover {
+    color: #fff;
+    background: #765f48;
+  }
+
+  .site-footer {
+    padding: 2rem 0;
+    border-top: 1px solid rgb(118 95 72 / 15%);
+    color: #765f48;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .blog-post {
+      padding: 3.5rem 0 4rem;
+    }
+
+    .back-link {
+      margin-bottom: 2.5rem;
+    }
+
+    .post-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .post-content {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+  }
+</style>
