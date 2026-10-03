@@ -2,13 +2,23 @@
 
 export const posts = [
 
+  {
+    title: "Let's talk about my editing process!",
+    date: "October 3, 2026",
+    dateTime: "2026-10-02",
+    slug: "post_three",
+    excerpt:
+      "Since professional editing for Not Interested will be kicking off soon, I thought I'd share some details on my editing process.",
+    tags: ["Writing"],
+  }, 
+
     {
     title: "Not Interested has an editor!",
     date: "October 2, 2026",
     dateTime: "2026-10-02",
     slug: "post_two",
     excerpt:
-      "I have finally taken the steps to schedule editing for Not Interested. Editing will begin at the end of October and end in mid-November. From there, I have to clean up the manuscript, send it on to my proofreader for some last spot checks, and then ... publish!",
+      "I have finally taken the steps to schedule editing for Not Interested.",
     tags: ["Writing Updates", "Proximity"],
   },
   {

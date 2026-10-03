@@ -1,0 +1,351 @@
+---
+import Navigation from "../../components/navigation.astro";
+import { posts } from "../../data/posts.js";
+
+const post = posts.find((post) => post.slug === "post_three");
+
+if (!post) {
+  throw new Error("Blog post not found.");
+}
+
+const { title, date, tags } = post;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | Ivy Duncan</title>
+    <meta
+      name="description"
+      content={post.excerpt}
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <article class="blog-post">
+        <div class="container narrow">
+          <header class="post-header">
+            <p class="eyebrow">From the Blog</p>
+
+            <h1>{title}</h1>
+
+            <p class="post-date">{date}</p>
+
+            <div class="post-tags">
+              {tags.map((tag) => (
+                <a
+                  href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                  class="post-tag"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </header>
+
+          <div class="post-content">
+  <p>
+    Since professional editing for <em>Not Interested</em> will be kicking off soon,
+    I thought I'd share some details on my editing process.
+  </p>
+
+  <p>
+    When "writing a book"—well, correction, when "publishing" a book—the writing
+    part is really only half the work.
+  </p>
+
+  <p>
+    I started writing in middle school, probably around 2014. So I've been doing
+    this for over ten years now. When I started out on Wattpad, it was great because
+    I could just draft and write my books (I'll have another blog post talking about
+    the process I follow for that at some point), and then I could post them and not
+    worry about spelling errors (and there were a lot of them—I suck at spelling) and
+    grammar.
+  </p>
+
+  <p>
+    I wasn't professionally publishing my books or asking anyone for money to read
+    them, so posting what I now think is shit writing online wasn't a huge deal.
+  </p>
+
+  <p>
+    When I decided to start publishing my books, I began to learn how much extra work
+    I would have to do.
+  </p>
+
+  <p>
+    <em>Five Years and 2,000 Miles</em> was the first book I published. It had been
+    on Wattpad for about two years before I decided I was going to edit it and publish
+    it. And I quickly realized I am what I call an "over-writer."
+  </p>
+
+  <p>
+    When I copied that into a single Word document, I learned that baby was over
+    200k words.
+  </p>
+
+  <p>
+    And so came the first step of my editing process.
+  </p>
+
+  <h2>Step One: Remove the Stuff That Isn't Needed</h2>
+  <p class="step-subtitle">Reread #1</p>
+
+  <p>
+    This is really hard with romance, I think, because a lot of the things that
+    aren't needed are cute conversations and sweet moments. But we don't need 200k
+    of those.
+  </p>
+
+  <p>
+    So, I reread my entire book, fix any spelling errors that stick out, highlight
+    any sentences that read funny so I can re-evaluate them, and remove paragraphs
+    of writing that aren't needed. I even take out entire chapters sometimes.
+  </p>
+
+  <h2>Step Two: What Is Missing?</h2>
+
+  <p>
+    A lot of times during my rereads, I notice that things are missing. Honestly,
+    most of the time, since the books I've published so far have been college
+    romances, I'm missing breaks.
+  </p>
+
+  <p>
+    One of the last chapters I wrote in my upcoming book <em>Not Interested</em>
+    was a spring break chapter because I got through my reread and realized, wait,
+    this takes place during second semester. They have to have a spring break.
+  </p>
+
+  <p>
+    I actually forgot about it in <em>If It's Meant to Be</em> as well, and had to
+    rewrite the beginning of one of my chapters to make it so a week had passed and
+    Hale had gone home and thought about his problems with Logan over spring break.
+  </p>
+
+  <p>
+    These are the chapters and parts I add in this step.
+  </p>
+
+  <h2>Step Three: Go Back Over My Highlighted Sections and Fix Them</h2>
+
+  <p>
+    This is where I scroll through my file, find all the highlighted parts, and fix
+    them.
+  </p>
+
+  <p>
+    I also have a list of phrases and words I know I use too much saved on my phone,
+    and I highlight every single instance of them throughout the book and go through
+    and reword or remove them wherever I can.
+  </p>
+
+  <p>
+    If you think my characters sigh a lot now, you'd be amazed by my first draft.
+    It's like every single breath is a sigh.
+  </p>
+
+  <p>
+    Lots of nodding too. And they're always doing way too much with their eyes and
+    gazes. Ugh. I try to clean all of that up in this step.
+  </p>
+
+  <h2>Step Four: Reread #2</h2>
+
+  <p>
+    With all that stuff cleaned up, it's time to download my novel as a PDF document
+    and open it in a PDF editor on my trusty iPad.
+  </p>
+
+  <p>
+    I reread the whole thing again, and I mark it up with red as I go. Again,
+    highlighting anything that reads weird and fixing any typos and things that
+    stand out.
+  </p>
+
+  <p>
+    Then, I go through and update the file on my laptop with these edits.
+  </p>
+
+  <h2>Step Five: Reread #3</h2>
+
+  <p>
+    I like to print my novels and read them in book form, so I do this. Usually by
+    this point, it seems pretty clean to me, so I mark it up with a pen or pencil
+    and flag those sections with sticky notes.
+  </p>
+
+  <p>
+    Then, when I'm finished with the book, I make those changes on my laptop as well.
+  </p>
+
+  <h2>Step Six: Professional Editor!</h2>
+
+  <p>
+    I use Reedsy to find an editor and send the file over to them. It's really nice
+    because I get a month-long break from my book while they're working on it.
+  </p>
+
+  <h2>Step Seven: Review the Editor's Notes</h2>
+
+  <p>
+    I look over all the suggested changes and make the ones I need to or want to.
+    A lot are grammar-based and need to be fixed, but sometimes they suggest a
+    certain wording or adding certain things to the story, and I take the ones I
+    like and leave the ones I don't.
+  </p>
+
+  <h2>Step Eight: My Proofreader (Thanks, Mom!)</h2>
+
+  <p>
+    I hand my books over to my proofreader, who is my mother. She reads, gives me
+    feedback, and texts me about anything off she notices, and I make small fixes
+    according to what she finds.
+  </p>
+
+  <p class="post-ending">
+    And then... I upload the file to Amazon and publish!
+  </p>
+
+  <p>
+    The whole process really is a headache, and it takes <strong>months</strong>,
+    but I wouldn't do it if I didn't love it.
+  </p>
+</div>
+
+
+          <footer class="post-footer">
+            <a href="/blog" class="back-link">← Back to the blog</a>
+          </footer>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .narrow {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .blog-post {
+    padding: 5rem 0;
+  }
+
+  .post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .post-header h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+  }
+
+  .post-date {
+    margin: 1rem 0 0;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-content {
+    color: #3f3a35;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .post-content p {
+    margin: 0 0 1.5rem;
+  }
+
+  .post-content strong {
+    color: #765f48;
+  }
+
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd6cd;
+  }
+
+  .back-link {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .site-footer {
+    padding: 2rem 0;
+    border-top: 1px solid #ddd6cd;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .blog-post {
+      padding: 3.5rem 0;
+    }
+  }
+</style>
