@@ -3,9 +3,18 @@
 export const posts = [
 
   {
+    title: "The truth behind brunettes and brunets",
+    date: "October 4, 2026",
+    dateTime: "2026-10-04",
+    slug: "post_four",
+    excerpt:"Brunette and brunet—why do I use both spellings?",
+    tags: ["Writing"],
+  },
+
+  {
     title: "Let's talk about my editing process!",
     date: "October 3, 2026",
-    dateTime: "2026-10-02",
+    dateTime: "2026-10-03",
     slug: "post_three",
     excerpt:
       "Since professional editing for Not Interested will be kicking off soon, I thought I'd share some details on my editing process.",
