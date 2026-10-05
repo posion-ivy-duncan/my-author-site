@@ -178,6 +178,8 @@ const recommendedManhwa = [
         </div>
       </section>
 
+      
+
       <!-- CATS -->
     <section class="cats-section">
     <div class="container">
@@ -316,6 +318,24 @@ const recommendedManhwa = [
               Recommendations coming soon.
             </p>
           )}
+        </div>
+      </section>
+
+       <!-- BLOG -->
+      <section class="about-blog">
+        <div class="container narrow">
+          <p class="eyebrow">From the Blog</p>
+
+          <h2>Want to know even more about me?</h2>
+
+          <p>
+            Check out my blog for more about the books I love, the things I'm
+            reading, and the little pieces of life that make me who I am.
+          </p>
+
+          <a href="/blog/tag/about-me" class="button button-primary">
+            Read My About Me Posts
+          </a>
         </div>
       </section>
 
@@ -574,6 +594,31 @@ const recommendedManhwa = [
     font-size: 0.9rem;
   }
 
+  /* BLOG */
+.about-blog {
+  padding: 7rem 0;
+  background: #f4efe7;
+}
+
+.about-blog h2 {
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.about-blog p:not(.eyebrow) {
+  max-width: 650px;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.about-blog .button {
+  display: inline-block;
+}
+
   /* CLOSING */
   .about-closing {
     padding: 7rem 0;
@@ -628,6 +673,7 @@ const recommendedManhwa = [
     .about-section,
     .cats-section,
     .recommendation-section,
+    .about-blog,
     .about-closing {
       padding: 5rem 0;
     }

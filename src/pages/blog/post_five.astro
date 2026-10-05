@@ -1,8 +1,9 @@
+```astro
 ---
 import Navigation from "../../components/navigation.astro";
 import { posts } from "../../data/posts.js";
 
-const post = posts.find((post) => post.slug === "post_four");
+const post = posts.find((post) => post.slug === "post_five");
 
 if (!post) {
   throw new Error("Blog post not found.");
@@ -48,18 +49,44 @@ const { title, date, tags } = post;
           </header>
 
           <div class="post-content">
-        <p> Brunette and brunet—why do I use both spellings? </p>
+            <h2>My Bookshelves: Shelf One!</h2>
 
-        <p> I was recently going through book reviews (I tend to avoid this, but I wanted some for the website) and happened across one where someone was complaining about my use of the word <em>brunet</em>. They were put out that I use both, and that I alternated between them. This is not the first time I've gotten questions (or criticism) about this, so I thought I'd do a short little post explaining why I use both words. </p>
+            <p>
+              I figure, since I do want to fill this blog with stuff related to
+              me, I could occasionally post a new shelf from my bookshelf to
+              share a bit of what I've read with everyone.
+            </p>
 
-        <p> It's similar to the whole <em>blond</em> and <em>blonde</em> thing. If it's a man, he's blond. If it's a woman, she's blonde. It's the same thing for <em>brunet</em>. So, when you see me describe someone as brunet, that's a man with brown hair. And brunette is a woman. </p>
+            <p>Shelf one is all BL.</p>
 
-        <p> A lot of people don't know this. Hell, I didn't know this until I was editing <em>Five Years and 2,000 Miles</em>. </p>
+            <figure class="shelf-image">
+              <img
+                src="/images/blog/shelf_one.jpg"
+                alt="The first shelf of Ivy's bookshelf, featuring a collection of BL manga."
+              />
+            </figure>
 
-        <p> So, I thought I would share, because I think it's super interesting, even if some people think the switch between them can be irritating. Trust me, it's irritating when writing it too. </p>
+            <ul>
+              <li>I Can't Get Through the Night Alone by Yoh Matsumoto</li>
+              <li>All or Nothing by Shikke</li>
+              <li>Lethal Dose of Love by Yosumi</li>
+              <li>Wanna Be My Dress-Up Lover by Mamita</li>
+              <li>My Instructor Won't Yield by Deme Kingyobachi</li>
+              <li>I Didn't Mean to Fall in Love (#1 & #2) by Minta Suzumaru</li>
+              <li>Light of My Life by Fuuko Minami</li>
+              <li>
+                How to Deal When Your Intimidating Neighbor Is Actually an Omega
+                (#1 & #2) by Nikuya Inui
+              </li>
+              <li>Perfect Addiction (#1 & #2) by Kaoruko Miuama</li>
+              <li>Clumsy Kiss by Machi Suehiro</li>
+              <li>Fake Fact Lips (#1 & #2) by Machi Suehiro</li>
+              <li>Yankee & Carameliser by Chiuko Umeshibu</li>
+              <li>Call Me Master by Kedamashiba</li>
+            </ul>
 
-</div>
-
+            <p><strong>Favorite thing on this shelf:</strong> Fake Fact Lips</p>
+          </div>
 
           <footer class="post-footer">
             <a href="/blog" class="back-link">← Back to the blog</a>
@@ -156,6 +183,26 @@ const { title, date, tags } = post;
     color: #765f48;
   }
 
+  .shelf-image {
+    margin: 2rem 0 2.5rem;
+  }
+
+  .shelf-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .post-content ul {
+    margin: 0 0 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .post-content li {
+    margin-bottom: 0.5rem;
+  }
+
   .post-footer {
     margin-top: 4rem;
     padding-top: 2rem;
@@ -192,3 +239,4 @@ const { title, date, tags } = post;
     }
   }
 </style>
+```
