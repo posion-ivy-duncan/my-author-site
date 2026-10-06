@@ -2,6 +2,14 @@
 
 export const posts = [
 
+  {
+    title: "Not Interested Excerpt",
+    date: "October 6, 2026",
+    dateTime: "2026-10-06",
+    slug: "post_six",
+    excerpt:"Not Interested Excerpt",
+    tags: ["Excerpts", "Proximity"],
+  },
     {
     title: "My Bookshelf tour begins!",
     date: "October 5, 2026",
