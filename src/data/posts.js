@@ -2,6 +2,15 @@
 
 export const posts = [
 
+  {
+    title: "Bookshelf tour part two",
+    date: "October 11, 2026",
+    dateTime: "2026-10-11",
+    slug: "post_nine",
+    excerpt:"Booksheleves Part Two",
+    tags: ["About Me", "Reading", "Manga & Manhwa"],
+  },
+
    {
     title: "Friday Writing Recap",
     date: "October 9, 2026",
