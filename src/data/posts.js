@@ -3,6 +3,14 @@
 export const posts = [
 
   {
+    title: "Friday Writing Update",
+    date: "October 16, 2026",
+    dateTime: "2026-10-11",
+    slug: "post_ten",
+    excerpt:"This week's Friday Writing update",
+    tags: ["Writing"],
+  },
+  {
     title: "Bookshelf tour part two",
     date: "October 11, 2026",
     dateTime: "2026-10-11",
