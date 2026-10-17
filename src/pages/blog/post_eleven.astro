@@ -3,7 +3,7 @@
 import Navigation from "../../components/navigation.astro";
 import { posts } from "../../data/posts.js";
 
-const post = posts.find((post) => post.slug === "post_eleven");
+<!-- const post = posts.find((post) => post.slug === "post_eleven"); -->
 
 if (!post) {
   throw new Error("Blog post not found.");
