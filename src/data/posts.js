@@ -2,13 +2,30 @@
 
 export const posts = [
 
+  //  {
+  //   title: "Wisconsin Appreciation Post",
+  //   date: "October 18, 2026",
+  //   dateTime: "2026-10-18",
+  //   slug: "post_twelve",
+  //   excerpt:"A picture from a day trip to Door County, Wisconsin",
+  //   tags: ["About Me", "Travel"],
+  // },
+
+  // {
+  //   title: "MM Book Review",
+  //   date: "October 17, 2026",
+  //   dateTime: "2026-10-17",
+  //   slug: "post_eleven",
+  //   excerpt:"The Yandere Villain Heard My Thoughts",
+  //   tags: ["Reading"],
+  // },
   {
     title: "Friday Writing Update",
     date: "October 16, 2026",
-    dateTime: "2026-10-11",
+    dateTime: "2026-10-16",
     slug: "post_ten",
     excerpt:"This week's Friday Writing update",
-    tags: ["Writing"],
+    tags: ["Writing", "Writing Updates"],
   },
   {
     title: "Bookshelf tour part two",
@@ -25,7 +42,7 @@ export const posts = [
     dateTime: "2026-10-09",
     slug: "post_eight",
     excerpt:"I'm gonna start doing writing recaps for the week on Fridays.",
-    tags: ["Writing"],
+    tags: ["Writing", "Writing Updates"],
   },
     {
     title: "My Music Tastes",
