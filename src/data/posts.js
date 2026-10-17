@@ -11,14 +11,14 @@ export const posts = [
   //   tags: ["About Me", "Travel"],
   // },
 
-  // {
-  //   title: "MM Book Review",
-  //   date: "October 17, 2026",
-  //   dateTime: "2026-10-17",
-  //   slug: "post_eleven",
-  //   excerpt:"The Yandere Villain Heard My Thoughts",
-  //   tags: ["Reading"],
-  // },
+  {
+    title: "MM Book Review",
+    date: "October 17, 2026",
+    dateTime: "2026-10-17",
+    slug: "post_eleven",
+    excerpt:"The Yandere Villain Heard My Thoughts",
+    tags: ["Reading"],
+  },
   {
     title: "Friday Writing Update",
     date: "October 16, 2026",
