@@ -2,14 +2,14 @@
 
 export const posts = [
 
-  //  {
-  //   title: "Wisconsin Appreciation Post",
-  //   date: "October 18, 2026",
-  //   dateTime: "2026-10-18",
-  //   slug: "post_twelve",
-  //   excerpt:"A picture from a day trip to Door County, Wisconsin",
-  //   tags: ["About Me", "Travel"],
-  // },
+   {
+    title: "Wisconsin Appreciation Post",
+    date: "October 18, 2026",
+    dateTime: "2026-10-18",
+    slug: "post_twelve",
+    excerpt:"A picture from a day trip to Door County, Wisconsin",
+    tags: ["About Me", "Travel"],
+  },
 
   {
     title: "MM Book Review",
