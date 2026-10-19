@@ -1,22 +1,23 @@
+
 ---
 import Navigation from "../components/navigation.astro";
 import { posts } from "../data/posts.js";
 
 const tags = [...new Set(posts.flatMap((post) => post.tags))];
 
+const pageSize = 10;
+const latestPosts = posts.slice(0, pageSize);
+const totalPages = Math.ceil(posts.length / pageSize);
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-
     <title>Blog | Ivy Duncan</title>
-
     <meta
       name="description"
       content="Writing, travel, life updates, and whatever else Ivy Duncan feels like talking about."
@@ -63,21 +64,23 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
 
             <div class="ask-form-wrapper">
               <form
-                  class="ask-form"
-                  action="https://formspree.io/f/xgavjdaq"
-                  method="POST"
-                >
-                 <input
-                    type="hidden"
-                    name="_subject"
-                    value="New Ask Me Anything question - Ivy Duncan"
-                  />
+                class="ask-form"
+                action="https://formspree.io/f/xgavjdaq"
+                method="POST"
+              >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Ask Me Anything question - Ivy Duncan"
+                />
 
-                  <input
-                    type="text"
-                    name="_gotcha"
-                    style="display:none"
-                  />
+                <input
+                  type="text"
+                  name="_gotcha"
+                  style="display:none"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
 
                 <div class="form-field">
                   <label for="name">Your name</label>
@@ -137,7 +140,6 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
           </div>
 
           <div class="tag-list">
-
             {
               tags.map((tag) => (
                 <a
@@ -159,14 +161,18 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
             <p class="eyebrow">From the Blog</p>
 
             <h2>Latest Posts</h2>
+
+            <p class="posts-count">
+              Showing {latestPosts.length} of {posts.length} posts
+            </p>
           </div>
 
           <div class="post-list">
             {
-              posts.map((post) => (
+              latestPosts.map((post) => (
                 <article class="post-card">
                   <div class="post-meta">
-                    <time datetime="2026-10-01">{post.date}</time>
+                    <time datetime={post.dateTime}>{post.date}</time>
                   </div>
 
                   <h3>{post.title}</h3>
@@ -194,6 +200,39 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
               ))
             }
           </div>
+
+          <!-- PAGINATION -->
+          {
+            totalPages > 1 && (
+              <nav class="pagination" aria-label="Blog pages">
+                <span class="pagination-label">Pages:</span>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (pageNumber) => (
+                    <a
+                      href={
+                        pageNumber === 1
+                          ? "/blog"
+                          : `/blog/page/${pageNumber}`
+                      }
+                      class:list={[
+                        "page-number",
+                        { active: pageNumber === 1 },
+                      ]}
+                      aria-current={pageNumber === 1 ? "page" : undefined}
+                      aria-label={`Page ${pageNumber}`}
+                    >
+                      {pageNumber}
+                    </a>
+                  ),
+                )}
+
+                <a href="/blog/page/2" class="next-page">
+                  Next →
+                </a>
+              </nav>
+            )
+          }
         </div>
       </section>
     </main>
@@ -384,6 +423,13 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
     line-height: 1.1;
   }
 
+  .posts-count {
+    margin-top: 1rem;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+
   .post-list {
     max-width: 850px;
   }
@@ -453,6 +499,69 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
     text-underline-offset: 3px;
   }
 
+  /* PAGINATION */
+
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+  }
+
+  .pagination-label {
+    margin-right: 0.5rem;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .page-number,
+  .next-page {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 42px;
+    min-height: 42px;
+    padding: 0.5rem 0.85rem;
+    box-sizing: border-box;
+    border: 1px solid #c9c2b8;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .page-number.active,
+  .page-number:hover,
+  .next-page:hover {
+    background: #765f48;
+    border-color: #765f48;
+    color: #fffaf4;
+  }
+
+  .page-number.active {
+    font-weight: 700;
+    cursor: default;
+  }
+
+  .page-number:focus-visible,
+  .next-page:focus-visible,
+  .post-link:focus-visible,
+  .post-tag:focus-visible,
+  .tag-link:focus-visible {
+    outline: 2px solid #765f48;
+    outline-offset: 4px;
+  }
+
+  .next-page {
+    margin-left: 0.5rem;
+  }
+
   /* FOOTER */
 
   .site-footer {
@@ -495,6 +604,20 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
 
     .ask-form .button {
       width: 100%;
+    }
+
+    .pagination {
+      gap: 0.4rem;
+    }
+
+    .pagination-label {
+      width: 100%;
+      margin: 0 0 0.5rem;
+      text-align: center;
+    }
+
+    .next-page {
+      margin-left: 0;
     }
   }
 </style>

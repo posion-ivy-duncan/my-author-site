@@ -1,0 +1,341 @@
+
+---
+import Navigation from "../../../components/navigation.astro";
+import { posts } from "../../../data/posts.js";
+
+export function getStaticPaths({ paginate }) {
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+const pagePosts = page.data;
+const currentPage = page.currentPage;
+const totalPages = page.lastPage;
+const baseUrl = import.meta.env.BASE_URL;
+
+const tagUrl = (tag) =>
+  `${baseUrl}blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Page {currentPage} | Ivy Duncan</title>
+    <meta
+      name="description"
+      content="Writing, travel, life updates, and more from Ivy Duncan."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <section class="posts-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">From the Blog</p>
+            <h1>More from the Blog</h1>
+            <p class="posts-count">
+              Showing {pagePosts.length} posts — Page {currentPage} of {totalPages}
+            </p>
+          </div>
+
+          <div class="post-list">
+            {pagePosts.map((post) => (
+              <article class="post-card">
+                <div class="post-meta">
+                  <time datetime={post.dateTime}>{post.date}</time>
+                </div>
+
+                <h2>{post.title}</h2>
+
+                <p>{post.excerpt}</p>
+
+                <div class="post-tags">
+                  {post.tags.map((tag) => (
+                    <a href={tagUrl(tag)} class="post-tag">
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+
+                <a
+                  href={`${baseUrl}blog/${post.slug}`}
+                  class="post-link"
+                >
+                  Read More →
+                </a>
+              </article>
+            ))}
+          </div>
+
+          {totalPages > 1 && (
+            <nav class="pagination" aria-label="Blog pages">
+              <span class="pagination-label">Pages:</span>
+
+              {Array.from(
+                { length: totalPages },
+                (_, i) => i + 1,
+              ).map((pageNumber) => (
+                <a
+                  href={
+                    pageNumber === 1
+                      ? `${baseUrl}blog`
+                      : `${baseUrl}blog/page/${pageNumber}`
+                  }
+                  class:list={[
+                    "page-number",
+                    { active: pageNumber === currentPage },
+                  ]}
+                  aria-current={
+                    pageNumber === currentPage ? "page" : undefined
+                  }
+                  aria-label={`Page ${pageNumber}`}
+                >
+                  {pageNumber}
+                </a>
+              ))}
+
+              {currentPage < totalPages && (
+                <a
+                  href={`${baseUrl}blog/page/${currentPage + 1}`}
+                  class="next-page"
+                >
+                  Next →
+                </a>
+              )}
+
+              {currentPage > 1 && (
+                <a
+                  href={
+                    currentPage === 2
+                      ? `${baseUrl}blog`
+                      : `${baseUrl}blog/page/${currentPage - 1}`
+                  }
+                  class="next-page"
+                >
+                  ← Previous
+                </a>
+              )}
+            </nav>
+          )}
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  /* POSTS */
+
+  .posts-section {
+    padding: 7rem 0;
+    background: #fffaf4;
+  }
+
+  .section-heading {
+    max-width: 700px;
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .section-heading h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .posts-count {
+    margin-top: 1rem;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .post-list {
+    max-width: 850px;
+  }
+
+  .post-card {
+    padding: 2.5rem 0;
+    border-top: 1px solid #c9c2b8;
+  }
+
+  .post-card:last-child {
+    border-bottom: 1px solid #c9c2b8;
+  }
+
+  .post-meta {
+    margin-bottom: 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .post-card h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .post-card p {
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-link {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* PAGINATION */
+
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+  }
+
+  .pagination-label {
+    margin-right: 0.5rem;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .page-number,
+  .next-page {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 42px;
+    min-height: 42px;
+    padding: 0.5rem 0.85rem;
+    box-sizing: border-box;
+    border: 1px solid #c9c2b8;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .page-number.active,
+  .page-number:hover,
+  .next-page:hover {
+    background: #765f48;
+    border-color: #765f48;
+    color: #fffaf4;
+  }
+
+  .page-number.active {
+    font-weight: 700;
+    cursor: default;
+  }
+
+  .page-number:focus-visible,
+  .next-page:focus-visible,
+  .post-link:focus-visible,
+  .post-tag:focus-visible {
+    outline: 2px solid #765f48;
+    outline-offset: 4px;
+  }
+
+  /* FOOTER */
+
+  .site-footer {
+    padding: 2rem 0;
+    background: #fffaf4;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .posts-section {
+      padding: 5rem 0;
+    }
+
+    .pagination {
+      gap: 0.4rem;
+    }
+
+    .pagination-label {
+      width: 100%;
+      margin: 0 0 0.5rem;
+      text-align: center;
+    }
+  }
+</style>

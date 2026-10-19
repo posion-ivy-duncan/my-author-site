@@ -3,6 +3,14 @@
 export const posts = [
 
    {
+    title: "Bookshelf Tour Part Three",
+    date: "October 19, 2026",
+    dateTime: "2026-10-10",
+    slug: "post_thirteen",
+    excerpt:"Booksheleves Part Three",
+    tags: ["About Me", "Reading", "Manga & Manhwa"],
+  },
+   {
     title: "Wisconsin Appreciation Post",
     date: "October 18, 2026",
     dateTime: "2026-10-18",
@@ -28,7 +36,7 @@ export const posts = [
     tags: ["Writing", "Writing Updates"],
   },
   {
-    title: "Bookshelf tour part two",
+    title: "Bookshelf Tour Part Two",
     date: "October 11, 2026",
     dateTime: "2026-10-11",
     slug: "post_nine",
@@ -61,7 +69,7 @@ export const posts = [
     tags: ["Excerpts", "Proximity"],
   },
     {
-    title: "My Bookshelf tour begins!",
+    title: "My Bookshelf Tour Begins!",
     date: "October 5, 2026",
     dateTime: "2026-10-05",
     slug: "post_five",
