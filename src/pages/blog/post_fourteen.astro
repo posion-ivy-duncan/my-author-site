@@ -1,0 +1,383 @@
+
+---
+import Navigation from "../../components/navigation.astro";
+import { posts } from "../../data/posts.js";
+
+const post = posts.find((post) => post.slug === "post_fourteen");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.title} | Ivy Duncan</title>
+    <meta name="description" content={post.excerpt} />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main class="post-page">
+      <article class="post-container">
+        <header class="post-header">
+          <a href="/blog" class="back-link">← Back to Blog</a>
+
+          <p class="post-date">
+            <time datetime={post.dateTime}>{post.date}</time>
+          </p>
+
+          <h1>{post.title}</h1>
+
+          <div class="post-tags">
+            {post.tags.map((tag) => (
+              <a
+                href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                class="post-tag"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        </header>
+
+        <div class="post-content">
+         <p>
+            I had a lazy writing week this week, so insead of a boring Friday writing update, I thought I'd share some of my writing process. 
+         </p>
+          <p>
+            Now, I want to preface this by saying that this is how I write my
+            books, and it’s not necessarily how you should write yours. I think
+            something different works for everyone, but I know when I was
+            trying to write my first (and struggling) I did a lot of reading up
+            on how other authors approached writing their novels.
+          </p>
+
+          <p>
+            I feel like the first novel is the most important. Now, don’t get
+            me wrong, I think my first novel I ever finished was shit. Like,
+            absolutely terrible. But it was the hardest one to write, and
+            finishing it taught me that I was capable of doing it.
+          </p>
+
+          <p>
+            My writing process looks a little different since starting to
+            publish—there are way more editing steps to go through—but I’m not
+            gonna talk about that today.
+          </p>
+
+          <p>
+            This post is to talk about the biggest hurdle: the first draft.
+          </p>
+
+          <p>
+            I’d say there are four steps in constructing this draft for me, and
+            the first one is super duper messy and actually quite anxiety
+            inducing.
+          </p>
+
+          <h2>Step One: The Ideas Phase</h2>
+
+          <p>
+            I’ll call it “the ideas phase”. For me, this usually happens when
+            I’m lying in bed trying (and failing) to sleep at night. The plots
+            usually come to me then, and I open a document on my phone and
+            start making a long (sometimes very very long) bulleted list with
+            all the plot points that come to mind. Sometimes these are in
+            order. Sometimes they’re not.
+          </p>
+
+          <p>
+            I’ll use <em>Right Next Door</em> as an example. Here is the
+            beginning of the bulleted list I made for <em>Right Next Door</em>:
+          </p>
+
+          <ul>
+            <li>
+              When they’re together people keep hitting on Miles. (“Am I the
+              ugly one on this relationship?”)
+            </li>
+            <li>Listen to music in bed together</li>
+            <li>
+              This is my brunette in glasses (wears them a lot but not all the
+              time) who's cute as shit and dresses really well. Also, the two
+              mains hate each other
+            </li>
+            <li>
+              B has a job interview or something the next morning and has to
+              leave suddenly and other two friends go talk to T
+            </li>
+            <li>T and B are left together and T kisses him and asks him out</li>
+          </ul>
+
+          <p>
+            Notice that a lot of this didn’t end up in the final draft. Also,
+            notice that it does not start at the beginning of the story.
+          </p>
+
+          <h2>Step Two: Organizing the Ideas</h2>
+
+          <p>
+            That’s where step two starts! At this point, once I have enough
+            ideas written down, I create another document to organize these
+            ideas and get them in order. For <em>Right Next Door</em>, this
+            document is actually called “Be More Organized, Bitch”. It is in
+            this phase that a lot of the ideas get cut out, because I realize
+            they just don’t fit.
+          </p>
+
+          <p>For example, here is the beginning of that document:</p>
+
+          <ul>
+            <li>
+              Beginning is that Ren got a text from Hale telling him to go say
+              hi to the new neighbors, says he met one in the elevator and he
+              seems kind of cute and Ren goes over there to say hello and a
+              freshman boy opens the door and he tries to be friendly but the
+              kid is a douche and they don’t get along
+            </li>
+            <li>
+              It is Hale and Ren’s senior year and Miles and Logan’s junior year
+            </li>
+            <li>
+              Ren is the type of person who goes on lots of dates but he’s
+              rarely serious
+            </li>
+            <li>
+              Hale and Logan take Ren and Miles out to dinner to tell them that
+              they’re dating. Ren feels betrayed
+            </li>
+          </ul>
+
+          <p>
+            This should sound a little more familiar if you’ve read the book.
+          </p>
+
+          <h2>Step Three: Dividing Everything into Chapters</h2>
+
+          <p>
+            Once this is all in order and sorted out, I move on to step three,
+            which is dividing all these bullet points up into chapters, and
+            making a document for each of them. This is probably my favorite
+            step of the whole book writing process, since it’s like writing a
+            book and thinking through all the fun parts without having to put
+            in all the work to fill in the in between stuff.
+          </p>
+
+          <p>
+            Here is the document for chapter one of <em>Right Next Door</em> at this step:
+          </p>
+
+          <div class="example-document">
+            <p class="example-title">Part one- Chapter One</p>
+            <ul>
+              <li>
+                Ren is unpacking when Hale tells him to go meet the neighbors.
+                He and Hale moved in about a week ago, and while Hale’s room is
+                all set up perfectly, Ren waited to unpack until the last minute
+              </li>
+              <li>
+                Hale says he met one in the elevator and he seems kind of cute
+                and Ren goes over there to say hello and a freshman boy opens
+                the door (red hair, hazel eyes) and he tries to be friendly but
+                the kid is a douche and they don’t get along and Ren is like
+                “what’s cute about that”.
+              </li>
+            </ul>
+          </div>
+
+          <p>
+            Notice this is the step where I start including quotes or exact
+            phrases I want the characters to say.
+          </p>
+
+          <h2>Step Four: Writing the Actual Chapters</h2>
+
+          <p>
+            This is what I reference as I move on to step four, which is
+            writing the actual chapters, which leads me to the elusive first
+            draft.
+          </p>
+
+          <p>
+            Doing it this way—with these four steps—has been a really good way
+            for me to keep plots organized, and make sure that things progress
+            at a good and steady rate. I think these first couple steps are my
+            secret to success when it comes to finishing books. It deters
+            writer’s block because you have a guide to follow, so you always
+            know what you’re writing next.
+          </p>
+
+          <p>
+            Now, of course the actual chapter has a lot more meat to it, but
+            I’m just making a first draft off of my list, so it doesn’t need to
+            be perfect, and if I’m struggling with what to write to turn my
+            list into a chapter, I’m always able to get something down, even if
+            it’s complete shit, by at least executing the plot points mentioned.
+          </p>
+
+          <p>Then, it’s draft two that does a lot of the cleanup.</p>
+
+          <p>But that’s for a different post!</p>
+        </div>
+
+        <footer class="post-footer">
+          <a href="/blog" class="back-link">← Back to Blog</a>
+        </footer>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #fffaf4;
+    color: #3f3a35;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.8;
+  }
+
+  .post-page {
+    padding: 5rem 0 7rem;
+  }
+
+  .post-container {
+    width: min(760px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #c9c2b8;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-date {
+    margin-bottom: 0.75rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .post-header h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .post-content h2 {
+    margin: 3rem 0 1.25rem;
+    font-size: clamp(1.7rem, 4vw, 2.25rem);
+    line-height: 1.25;
+  }
+
+  .post-content ul {
+    margin: 0 0 2rem;
+    padding-left: 1.5rem;
+  }
+
+  .post-content li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+  }
+
+  .example-document {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid #765f48;
+    background: #f4efe7;
+  }
+
+  .example-document .example-title {
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .example-document ul {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #c9c2b8;
+  }
+
+  .site-footer {
+    padding: 2rem 0;
+    background: #fffaf4;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 700px) {
+    .post-page {
+      padding: 3rem 0 5rem;
+    }
+
+    .post-container {
+      width: calc(100% - 2rem);
+    }
+
+    .example-document {
+      padding: 1.25rem;
+    }
+  }
+</style>

@@ -2,10 +2,19 @@
 
 export const posts = [
 
+  {
+    title: "A Look into my Writing Process",
+    date: "October 23, 2026",
+    dateTime: "2026-10-23",
+    slug: "post_fourteen",
+    excerpt:"Let's talk about writing a first draft.",
+    tags: ["Writing", "Author Stuff"],
+  },
+
    {
     title: "Bookshelf Tour Part Three",
     date: "October 19, 2026",
-    dateTime: "2026-10-10",
+    dateTime: "2026-10-19",
     slug: "post_thirteen",
     excerpt:"Booksheleves Part Three",
     tags: ["About Me", "Reading", "Manga & Manhwa"],
