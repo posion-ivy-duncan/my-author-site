@@ -2,6 +2,14 @@
 
 export const posts = [
 
+    {
+    title: "Regas Manhwa Review",
+    date: "October 24, 2026",
+    dateTime: "2026-10-24",
+    slug: "post_fifteen",
+    excerpt:"My thoughts on the Regas Manhwa.",
+    tags: ["Reading", "Manga & Manhwa"],
+  },
   {
     title: "A Look into my Writing Process",
     date: "October 23, 2026",
@@ -10,8 +18,7 @@ export const posts = [
     excerpt:"Let's talk about writing a first draft.",
     tags: ["Writing", "Author Stuff"],
   },
-
-   {
+  {
     title: "Bookshelf Tour Part Three",
     date: "October 19, 2026",
     dateTime: "2026-10-19",

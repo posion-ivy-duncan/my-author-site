@@ -1,0 +1,319 @@
+---
+import Navigation from "../../components/navigation.astro";
+import { posts } from "../../data/posts.js";
+
+const post = posts.find((post) => post.slug === "post_fifteen");
+
+if (!post) {
+  throw new Error("Post not found: post_fifteen");
+}
+
+const { title, date, dateTime, tags } = post;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Ivy Duncan</title>
+    <meta
+      name="description"
+      content="A review of Regas, a fantasy romance BL manhwa."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <article class="blog-post">
+        <div class="container narrow">
+          <a href="/blog" class="back-link">← Back to Blog</a>
+
+          <header class="post-header">
+            <p class="post-date">
+              <time datetime={dateTime}>{date}</time>
+            </p>
+
+            <h1>{title}</h1>
+
+            <div class="post-tags">
+              {tags.map((tag) => (
+                <a
+                  href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                  class="post-tag"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </header>
+
+          <div class="post-content">
+            <p class="review-intro">
+              A quick review of <em>Regas</em>.
+            </p>
+
+            <figure class="cover-image">
+              <img
+                src="/images/blog/manhwa_review_one.jpg"
+                alt="Cover of Regas manhwa"
+              />
+            </figure>
+
+            <div class="review-details">
+              <p><strong>Rating:</strong> 5/5 stars</p>
+              <p><strong>Where to Read:</strong> Tapas</p>
+              <p>
+                <strong>How I Heard About It:</strong> TikTok
+              </p>
+            </div>
+
+            <h2>The Plot</h2>
+
+            <p>
+              In this world, kings have the powers of dragons. These powers
+              make them stronger, but they also make them more aggressive and
+              difficult to manage. Their partners, called Regas, help calm
+              their dragon urges.
+            </p>
+
+            <p>
+              The story follows a king and his Regas as they struggle against
+              the royal council, which has been poisoning generations of
+              kings.
+            </p>
+
+            <h2>My Thoughts</h2>
+
+            <p>
+              I absolutely loved this story! It made me laugh, the art is
+              beautiful, and the villains are really intriguing. The pacing is
+              also great. The manhwa is getting close to the end, and I'm
+              excited to see how everything wraps up.
+            </p>
+
+            <p>
+              The original web novel has sex scenes, but the manhwa is rated
+              R15, so those scenes won't be adapted. There is occasionally
+              some kissing, though. I usually prefer my manhwa to be a little
+              spicier, but the plot is good enough that I don't mind.
+            </p>
+
+            <p>
+              Overall, this is a five-star read for me. If you enjoy fantasy,
+              romance, beautiful artwork, and political intrigue, I definitely
+              recommend giving it a try!
+            </p>
+
+            <p><strong>SPOILERS BEYOND THIS POINT</strong></p>
+
+            <h2>Spoilers</h2>
+
+            <p>
+              One thing I have mixed feelings about is the relationship
+              between the main characters and how it develops.
+            </p>
+
+            <p>
+              Regas first meets the king when the prince is only eight years
+              old, while Regas is eighteen. Regas becomes the prince's
+              caretaker for a few months, but the royal council eventually
+              conspires to assassinate him.
+            </p>
+
+            <p>
+              Years later, the prince is now a twenty-year-old king, and
+              Regas reincarnates in the body of a very pretty man who is
+              around the king's age. Their romantic relationship only begins
+              at this point.
+            </p>
+
+            <p>
+              I understand that Regas is now in a different body and that
+              their romance doesn't begin until they're both adults. Still,
+              I find the situation a little weird because Regas knew the king
+              when he was a child. Regas occasionally thinks of the king in a
+              childlike way, which makes it harder for me to fully get behind
+              their relationship.
+            </p>
+
+            <p>
+              That said, I still really enjoy the story, and it hasn't
+              changed how much I love the overall plot. It's just one aspect
+              of the romance that leaves me feeling a little conflicted.
+            </p>
+          </div>
+
+          <div class="post-footer">
+            <a href="/blog" class="back-link">← Back to Blog</a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} Ivy Duncan. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .narrow {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .blog-post {
+    padding: 5rem 0 7rem;
+    background: #fffaf4;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #c9c2b8;
+  }
+
+  .post-date {
+    margin-bottom: 1rem;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .post-header h1 {
+    margin: 0 0 1.5rem;
+    color: #3f3a35;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+  }
+
+  .post-content {
+    color: #3f3a35;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .post-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-content h2 {
+    margin: 3rem 0 1.25rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  .review-intro {
+    font-size: 1.2rem;
+  }
+
+  .cover-image {
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .cover-image img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .review-details {
+    margin: 2rem 0 3rem;
+    padding: 1.5rem 2rem;
+    background: #f4efe7;
+  }
+
+  .review-details p {
+    margin-bottom: 0.5rem;
+  }
+
+  .review-details p:last-child {
+    margin-bottom: 0;
+  }
+
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #c9c2b8;
+  }
+
+  .post-footer .back-link {
+    margin-bottom: 0;
+  }
+
+  .site-footer {
+    padding: 2rem 0;
+    background: #f4efe7;
+  }
+
+  .site-footer p {
+    margin: 0;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 2rem, 1100px);
+    }
+
+    .blog-post {
+      padding: 3rem 0 5rem;
+    }
+
+    .post-header {
+      margin-bottom: 2rem;
+    }
+
+    .review-details {
+      padding: 1.25rem;
+    }
+  }
+</style>
