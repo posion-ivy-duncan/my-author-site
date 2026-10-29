@@ -1,0 +1,242 @@
+---
+import Navigation from "../../components/navigation.astro";
+import { posts } from "../../data/posts.js";
+
+const post = posts.find((post) => post.slug === "post_sixteen");
+
+if (!post) {
+  throw new Error("Post not found: post_sixteen");
+}
+
+const { title, date, dateTime, tags } = post;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Ivy Duncan</title>
+    <meta
+      name="description"
+      content="Why I called my romance books the Proximity Series, how the trope connects the books, and the other series I have planned."
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main class="container">
+      <article class="blog-post">
+        <header class="post-header">
+          <a href="/blog" class="back-link">&larr; Back to the blog</a>
+
+          <h1>{title}</h1>
+
+          <div class="post-meta">
+            <time datetime={dateTime}>{date}</time>
+
+            {tags.length > 0 && (
+              <div class="post-tags">
+                {tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+            )}
+          </div>
+        </header>
+
+        <div class="post-content">
+          <h2>Why Is the Series Called the Proximity Series?</h2>
+
+          <p>
+            This is kind of stupid, but I really hate coming up with book
+            names. And I hate coming up with series names even more.
+          </p>
+
+          <p>
+            The name <em>Proximity</em> came from the fact that all the books
+            in the series have a proximity trope in some way.
+          </p>
+
+          <p>Here's how it works for each book:</p>
+
+          <ul>
+            <li>
+              <strong>Books One and Two:</strong> The characters are
+              neighbors who are forced into each other's lives because
+              their respective roommates are dating each other.
+            </li>
+            <li>
+              <strong>Book Three:</strong> The characters are in the same
+              class and sit right next to each other. They also frequent the
+              same places on campus, including the library and coffee shop.
+            </li>
+            <li>
+              <strong>Book Four:</strong> <em>(Spoilers!)</em> Roommates.
+            </li>
+          </ul>
+
+          <p>
+            Now, this is kind of a stupid reason to name a series, because
+            when you think about it, most romance books have some kind of
+            proximity trope in them.
+          </p>
+
+          <p>
+            For example, <em>Five Years and 2,000 Miles</em> has Sloan and
+            Leo in a class together. So, technically, that has proximity,
+            too.
+          </p>
+
+          <p>
+            But I don't know what else I would have called the series, so
+            <em>Proximity</em> it is!
+          </p>
+
+          <h2>What's Next?</h2>
+
+          <p>
+            I have two more series planned for after the Proximity Series
+            concludes.
+          </p>
+
+          <p>
+            One I'm not ready to talk about publicly yet, but that one
+            already has a series name picked out. So at least I managed to
+            make that decision ahead of time!
+          </p>
+
+          <p>
+            The other has a reconnection theme. I have three stories planned
+            about couples who knew each other when they were younger and
+            then reconnected as adults.
+          </p>
+
+          <p>
+            I haven't figured out what I'm going to call that series yet.
+            Apparently, coming up with series names is going to remain a
+            problem for me.
+          </p>
+        </div>
+
+        <footer class="post-footer">
+          <a href="/blog" class="back-link">&larr; Back to all posts</a>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #fffaf4;
+    color: #3f3a35;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.8;
+  }
+
+  .container {
+    width: min(800px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+  }
+
+  .blog-post {
+    width: 100%;
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd6cd;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #765f48;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+    font-weight: normal;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    color: #6f6a63;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.65rem;
+    border: 1px solid #ddd6cd;
+    border-radius: 20px;
+    font-size: 0.8rem;
+  }
+
+  .post-content h2 {
+    margin: 2.5rem 0 1rem;
+    color: #765f48;
+    font-size: 1.6rem;
+    line-height: 1.35;
+    font-weight: normal;
+  }
+
+  .post-content p {
+    margin: 0 0 1.4rem;
+  }
+
+  .post-content ul {
+    margin: 0 0 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .post-content li {
+    margin-bottom: 1rem;
+    padding-left: 0.25rem;
+  }
+
+  .post-content strong {
+    color: #3f3a35;
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd6cd;
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      width: calc(100% - 2rem);
+      padding-top: 2rem;
+    }
+
+    .post-header {
+      margin-bottom: 2rem;
+    }
+
+    .post-content h2 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
