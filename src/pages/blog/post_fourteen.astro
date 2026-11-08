@@ -221,9 +221,11 @@ const post = posts.find((post) => post.slug === "post_fourteen");
           <p>But that’s for a different post!</p>
         </div>
 
-        <footer class="post-footer">
-          <a href="/blog" class="back-link">← Back to Blog</a>
-        </footer>
+        <div class="post-footer">
+            <a href="/blog" class="button button-secondary">
+              Back to Blog
+            </a>
+          </div>
       </article>
     </main>
 
@@ -259,18 +261,16 @@ const post = posts.find((post) => post.slug === "post_fourteen");
     border-bottom: 1px solid #c9c2b8;
   }
 
-  .back-link {
+    .back-link {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     color: #765f48;
-    font-family: system-ui, sans-serif;
-    font-size: 0.85rem;
     text-decoration: none;
+    font-size: 0.95rem;
   }
 
   .back-link:hover {
     text-decoration: underline;
-    text-underline-offset: 3px;
   }
 
   .post-date {
@@ -348,6 +348,26 @@ const post = posts.find((post) => post.slug === "post_fourteen");
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid #c9c2b8;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid #765f48;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .button-secondary {
+    color: #765f48;
+    background: transparent;
+  }
+
+  .button-secondary:hover {
+    color: #fff;
+    background: #765f48;
   }
 
   .site-footer {

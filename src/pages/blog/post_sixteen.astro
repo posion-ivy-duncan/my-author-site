@@ -1,3 +1,4 @@
+
 ---
 import Navigation from "../../components/navigation.astro";
 import { posts } from "../../data/posts.js";
@@ -9,6 +10,9 @@ if (!post) {
 }
 
 const { title, date, dateTime, tags } = post;
+
+const tagSlug = (tag) =>
+  tag.toLowerCase().trim().replaceAll(" ", "-");
 ---
 
 <!doctype html>
@@ -27,21 +31,29 @@ const { title, date, dateTime, tags } = post;
     <Navigation />
 
     <main class="container">
-      <article class="blog-post">
+      <article class="blog-post narrow">
+      <a href="/blog" class="back-link">&larr; Back to the blog</a>
         <header class="post-header">
-          <a href="/blog" class="back-link">&larr; Back to the blog</a>
+
 
           <h1>{title}</h1>
 
-          <div class="post-meta">
+          <p class="post-date">
             <time datetime={dateTime}>{date}</time>
+          </p>
 
-            {tags.length > 0 && (
-              <div class="post-tags">
-                {tags.map((tag) => <span class="tag">{tag}</span>)}
-              </div>
-            )}
-          </div>
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map((tag) => (
+                <a
+                  href={`/blog/tag/${tagSlug(tag)}`}
+                  class="post-tag"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )}
         </header>
 
         <div class="post-content">
@@ -116,81 +128,102 @@ const { title, date, dateTime, tags } = post;
             Apparently, coming up with series names is going to remain a
             problem for me.
           </p>
-        </div>
+        
 
-        <footer class="post-footer">
-          <a href="/blog" class="back-link">&larr; Back to all posts</a>
-        </footer>
+        <div class="post-footer">
+            <a href="/blog" class="button button-secondary">
+              Back to Blog
+            </a>
+          </div>
+          </div>
       </article>
     </main>
   </body>
 </html>
 
 <style>
-  :global(body) {
-    margin: 0;
-    background: #fffaf4;
-    color: #3f3a35;
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.8;
+  .container {
+    width: min(1100px, calc(100% - 3rem));
+    margin-inline: auto;
   }
 
-  .container {
-    width: min(800px, calc(100% - 3rem));
-    margin: 0 auto;
-    padding: 3rem 0 5rem;
+  .narrow {
+    max-width: 800px;
+    margin-inline: auto;
   }
 
   .blog-post {
-    width: 100%;
-  }
-
-  .post-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #ddd6cd;
+    padding: 5rem 0;
   }
 
   .back-link {
     display: inline-block;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     color: #765f48;
-    font-size: 0.95rem;
     text-decoration: none;
+    font-size: 0.95rem;
   }
 
   .back-link:hover {
     text-decoration: underline;
   }
 
-  h1 {
+  .post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .eyebrow {
     margin: 0 0 1rem;
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.2;
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .post-header h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
     font-weight: normal;
   }
 
-  .post-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem;
+  .post-date {
+    margin: 1rem 0 0;
     color: #6f6a63;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9rem;
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
   }
 
   .post-tags {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
+    margin-top: 1.25rem;
   }
 
-  .tag {
-    padding: 0.2rem 0.65rem;
-    border: 1px solid #ddd6cd;
-    border-radius: 20px;
-    font-size: 0.8rem;
+  .post-tag {
+    color: #765f48;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .post-tag:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-content {
+    color: #3f3a35;
+    font-size: 1.1rem;
+    line-height: 1.8;
   }
 
   .post-content h2 {
@@ -202,7 +235,11 @@ const { title, date, dateTime, tags } = post;
   }
 
   .post-content p {
-    margin: 0 0 1.4rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .post-content strong {
+    color: #765f48;
   }
 
   .post-content ul {
@@ -211,32 +248,50 @@ const { title, date, dateTime, tags } = post;
   }
 
   .post-content li {
-    margin-bottom: 1rem;
-    padding-left: 0.25rem;
-  }
-
-  .post-content strong {
-    color: #3f3a35;
+    margin-bottom: 0.5rem;
   }
 
   .post-footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
     border-top: 1px solid #ddd6cd;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid #765f48;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .button-secondary {
+    color: #765f48;
+    background: transparent;
+  }
+
+  .button-secondary:hover {
+    color: #fff;
+    background: #765f48;
+  }
+
+  .site-footer {
+    padding: 2rem 0;
+    border-top: 1px solid #ddd6cd;
+    color: #6f6a63;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85rem;
   }
 
   @media (max-width: 700px) {
     .container {
-      width: calc(100% - 2rem);
-      padding-top: 2rem;
+      width: min(100% - 2rem, 1100px);
     }
 
-    .post-header {
-      margin-bottom: 2rem;
-    }
-
-    .post-content h2 {
-      font-size: 1.4rem;
+    .blog-post {
+      padding: 3.5rem 0;
     }
   }
 </style>

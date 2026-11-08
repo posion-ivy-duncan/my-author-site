@@ -2,14 +2,22 @@
 
 export const posts = [
 
-  {
-  title: "Why Is the Series Called the Proximity Series?",
-  date: "October 29, 2026",
-  dateTime: "2026-10-29",
-  slug: "post_sixteen",
-  excerpt: "How I came up with the name for the Proximity Series, why it fits the books, and the other series I have planned.",
-  tags: ["Writing", "Proximity", "Author Stuff"]
-},
+   {
+    title: "Writing Update",
+    date: "November 7, 2026",
+    dateTime: "2026-11-07",
+    slug: "post_seventeen",
+    excerpt:"Long overdue writing update",
+    tags: ["Writing", "Writing Updates"],
+  },
+    {
+    title: "Why Is the Series Called the Proximity Series?",
+    date: "October 29, 2026",
+    dateTime: "2026-10-29",
+    slug: "post_sixteen",
+    excerpt: "How I came up with the name for the Proximity Series, why it fits the books, and the other series I have planned.",
+    tags: ["Writing", "Proximity", "Author Stuff"]
+  },
 
     {
     title: "Regas Manhwa Review",

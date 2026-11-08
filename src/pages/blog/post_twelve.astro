@@ -29,8 +29,8 @@ const { title, date, tags } = post;
     <main>
       <article class="blog-post">
         <div class="container narrow">
+        <a href="/blog" class="back-link">← Back to Blog</a>
           <header class="post-header">
-            <p class="eyebrow">From the Blog</p>
 
             <h1>{title}</h1>
 
@@ -67,9 +67,11 @@ const { title, date, tags } = post;
 
           </div>
 
-          <footer class="post-footer">
-            <a href="/blog" class="back-link">← Back to the blog</a>
-          </footer>
+         <div class="post-footer">
+            <a href="/blog" class="button button-secondary">
+              Back to Blog
+            </a>
+          </div>
         </div>
       </article>
     </main>
@@ -96,6 +98,15 @@ const { title, date, tags } = post;
   .blog-post {
     padding: 5rem 0;
   }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 3rem;
+    color: #765f48;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
 
   .post-header {
     text-align: center;
@@ -186,6 +197,26 @@ const { title, date, tags } = post;
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid #ddd6cd;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid #765f48;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .button-secondary {
+    color: #765f48;
+    background: transparent;
+  }
+
+  .button-secondary:hover {
+    color: #fff;
+    background: #765f48;
   }
 
   .back-link {
