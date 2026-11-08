@@ -2,6 +2,14 @@
 
 export const posts = [
 
+  {
+    title: "Book Shelf Four",
+    date: "November 8, 2026",
+    dateTime: "2026-11-08",
+    slug: "post_eighteen",
+    excerpt:"Book shelf four",
+    tags: ["About Me", "Reading", "Manga & Manhwa"],
+  },
    {
     title: "Writing Update",
     date: "November 7, 2026",
